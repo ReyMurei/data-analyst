@@ -1,33 +1,33 @@
 import { useEffect, useRef, useState } from 'react';
-import { Code2, Palette, Rocket, Sparkles } from 'lucide-react';
+import { BarChart3, Database, LineChart, TrendingUp, Code2, Palette, Rocket, Sparkles } from 'lucide-react';
 
 const stats = [
-  { label: 'Years Experience', value: 5 },
-  { label: 'Projects Completed', value: 50 },
-  { label: 'Happy Clients', value: 30 },
-  { label: 'Awards Won', value: 8 },
+  { label: 'Years Experience', value: 3 },
+  { label: 'Projects Completed', value: 12 },
+  { label: 'Happy Clients', value: 8 },
+  { label: 'Data Insights', value: 50 },
 ];
 
 const services = [
   {
-    icon: Code2,
-    title: 'Web Development',
-    description: 'Building fast, responsive, and scalable web applications using modern technologies.',
+    icon: Database,
+    title: 'Data Analysis',
+    description: 'Transforming raw data into actionable insights. I specialize in data cleaning, statistical analysis, and uncovering patterns that drive business decisions.',
   },
   {
-    icon: Palette,
-    title: 'UI/UX Design',
-    description: 'Creating intuitive and visually appealing user interfaces and experiences.',
+    icon: BarChart3,
+    title: 'Data Visualization',
+    description: 'Creating compelling visualizations and interactive dashboards that tell clear stories with Tableau, Power BI, and Python visualization libraries.',
   },
   {
-    icon: Rocket,
-    title: 'Performance Optimization',
-    description: 'Optimizing applications for speed, SEO, and better user engagement.',
+    icon: LineChart,
+    title: 'Statistical Analysis',
+    description: 'Applying statistical methods and predictive modeling to solve real-world problems and forecast trends with confidence.',
   },
   {
-    icon: Sparkles,
-    title: 'Creative Solutions',
-    description: 'Bringing innovative ideas to life with creative problem-solving.',
+    icon: TrendingUp,
+    title: 'Business Intelligence',
+    description: 'Delivering data-driven recommendations that optimize operations, increase efficiency, and maximize ROI.',
   },
 ];
 
@@ -78,12 +78,13 @@ export default function About() {
         <div className="text-center mb-16">
           <span className="text-purple-400 text-sm font-medium uppercase tracking-wider">About Me</span>
           <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-6">
-            Passionate about creating{' '}
-            <span className="gradient-text">digital experiences</span>
+            Turning{' '}
+            <span className="gradient-text">Data into Decisions</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            I'm a dedicated developer and designer with a passion for crafting beautiful, 
-            functional, and user-centered digital experiences.
+            I'm a Data Analyst passionate about uncovering insights that drive business growth. 
+            I combine analytical rigor with clear communication to help organizations make smarter, 
+            data-driven decisions.
           </p>
         </div>
 
@@ -97,14 +98,14 @@ export default function About() {
             >
               <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
                 <AnimatedCounter target={stat.value} />
-                +
+                {stat.label === 'Data Insights' ? '+' : '+'}
               </div>
               <div className="text-sm text-muted-foreground">{stat.label}</div>
             </div>
           ))}
         </div>
 
-        {/* Services Grid */}
+        {/* Services Grid - Now focused on Data Analysis */}
         <div className="grid md:grid-cols-2 gap-6">
           {services.map((service, index) => (
             <div
@@ -121,30 +122,33 @@ export default function About() {
           ))}
         </div>
 
-        {/* Bio */}
+        {/* Bio - Updated for Data Analyst */}
         <div className="mt-20 p-8 md:p-12 rounded-3xl bg-gradient-to-br from-purple-600/10 via-blue-600/5 to-transparent border border-purple-500/20">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6">My Journey</h3>
+              <h3 className="text-2xl md:text-3xl font-bold mb-6">My Journey in Data</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                With over 5 years of experience in web development and design, I've had the privilege 
-                of working with diverse clients from startups to established enterprises.
+                With a strong foundation in statistics and a passion for problem-solving, I've helped 
+                businesses across industries unlock the value hidden in their data. From cleaning messy 
+                datasets to building predictive models, I thrive on turning complexity into clarity.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                My approach combines technical expertise with creative thinking, ensuring every project 
-                not only functions flawlessly but also delivers an exceptional user experience.
+                My approach combines technical expertise in SQL, Python, and visualization tools with 
+                strong business acumen. I don't just analyze data — I translate it into actionable 
+                recommendations that drive real impact.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                When I'm not coding, you'll find me exploring new technologies, contributing to open-source 
-                projects, or sharing my knowledge through blog posts and mentoring.
+                When I'm not digging into datasets, you'll find me exploring new analytics tools, 
+                contributing to data communities, or helping others learn the power of data literacy.
               </p>
             </div>
             <div className="relative">
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-purple-600 to-blue-600 p-1">
                 <div className="w-full h-full rounded-2xl bg-card flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-6xl font-bold gradient-text mb-2">5+</div>
-                    <div className="text-muted-foreground">Years of Excellence</div>
+                    <div className="text-6xl font-bold gradient-text mb-2">3+</div>
+                    <div className="text-muted-foreground">Years of Analytics</div>
+                    <div className="text-sm text-muted-foreground mt-2">50+ Datasets Analyzed</div>
                   </div>
                 </div>
               </div>
