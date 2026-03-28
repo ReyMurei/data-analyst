@@ -2,41 +2,41 @@ import { useEffect, useRef, useState } from 'react';
 
 const skillCategories = [
   {
-    name: 'Frontend',
+    name: 'Data Analysis',
     skills: [
-      { name: 'React', level: 95 },
-      { name: 'TypeScript', level: 90 },
-      { name: 'Next.js', level: 88 },
-      { name: 'Vue.js', level: 80 },
-      { name: 'Tailwind CSS', level: 95 },
+      { name: 'SQL', level: 95 },
+      { name: 'Python (Pandas)', level: 92 },
+      { name: 'R', level: 85 },
+      { name: 'Excel/Google Sheets', level: 90 },
+      { name: 'Statistical Analysis', level: 88 },
     ],
   },
   {
-    name: 'Backend',
+    name: 'Visualization',
     skills: [
-      { name: 'Node.js', level: 90 },
-      { name: 'Python', level: 85 },
-      { name: 'PostgreSQL', level: 82 },
-      { name: 'MongoDB', level: 88 },
-      { name: 'GraphQL', level: 78 },
+      { name: 'Tableau', level: 90 },
+      { name: 'Power BI', level: 88 },
+      { name: 'Looker', level: 82 },
+      { name: 'Matplotlib/Seaborn', level: 85 },
+      { name: 'Plotly', level: 80 },
     ],
   },
   {
-    name: 'Tools & DevOps',
+    name: 'ML & Engineering',
     skills: [
-      { name: 'Git', level: 92 },
-      { name: 'Docker', level: 80 },
-      { name: 'AWS', level: 75 },
-      { name: 'CI/CD', level: 82 },
-      { name: 'Linux', level: 85 },
+      { name: 'scikit-learn', level: 85 },
+      { name: 'TensorFlow/Keras', level: 75 },
+      { name: 'BigQuery', level: 82 },
+      { name: 'Spark/PySpark', level: 78 },
+      { name: 'Git/Version Control', level: 88 },
     ],
   },
 ];
 
 const technologies = [
-  'React', 'Next.js', 'TypeScript', 'Node.js', 'Python',
-  'PostgreSQL', 'MongoDB', 'GraphQL', 'Docker', 'AWS',
-  'Tailwind CSS', 'Figma', 'Git', 'Linux', 'Redis',
+  'SQL', 'Python', 'R', 'Tableau', 'Power BI',
+  'Pandas', 'NumPy', 'scikit-learn', 'TensorFlow', 'BigQuery',
+  'Looker', 'Spark', 'PostgreSQL', 'MongoDB', 'AWS',
 ];
 
 function SkillBar({ name, level, delay }: { name: string; level: number; delay: number }) {
@@ -72,7 +72,7 @@ function SkillBar({ name, level, delay }: { name: string; level: number; delay: 
       </div>
       <div className="h-2 bg-secondary rounded-full overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-purple-600 to-blue-600 rounded-full transition-all duration-1000 ease-out"
+          className="h-full bg-gradient-to-r from-emerald-600 to-cyan-600 rounded-full transition-all duration-1000 ease-out"
           style={{ width: `${width}%` }}
         />
       </div>
@@ -84,18 +84,18 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24 px-4 relative">
       {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
 
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-purple-400 text-sm font-medium uppercase tracking-wider">Skills</span>
+          <span className="text-emerald-400 text-sm font-medium uppercase tracking-wider">Skills</span>
           <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-6">
-            Technologies &{' '}
-            <span className="gradient-text">Expertise</span>
+            Tools &{' '}
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Expertise</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive toolkit of technologies I use to bring ideas to life.
+            A comprehensive toolkit for extracting insights, building models, and driving data-informed decisions.
           </p>
         </div>
 
@@ -106,7 +106,7 @@ export default function Skills() {
               key={category.name}
               className="p-6 rounded-2xl bg-card/50 border border-border/50"
             >
-              <h3 className="text-xl font-semibold mb-6 gradient-text">{category.name}</h3>
+              <h3 className="text-xl font-semibold mb-6 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">{category.name}</h3>
               {category.skills.map((skill, skillIndex) => (
                 <SkillBar
                   key={skill.name}
@@ -126,7 +126,7 @@ export default function Skills() {
             {technologies.map((tech, index) => (
               <span
                 key={tech}
-                className="px-6 py-3 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 hover:border-purple-500/40 transition-all duration-300 cursor-default"
+                className="px-6 py-3 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300 cursor-default"
                 style={{
                   animationDelay: `${index * 50}ms`,
                   fontSize: `${0.9 + Math.random() * 0.3}rem`,
@@ -140,17 +140,17 @@ export default function Skills() {
 
         {/* Certifications */}
         <div className="mt-20 grid md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-600/10 to-transparent border border-purple-500/20 text-center">
-            <div className="text-3xl font-bold gradient-text mb-2">AWS</div>
-            <div className="text-sm text-muted-foreground">Certified Solutions Architect</div>
-          </div>
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-600/10 to-transparent border border-blue-500/20 text-center">
-            <div className="text-3xl font-bold gradient-text mb-2">Google</div>
-            <div className="text-sm text-muted-foreground">Professional Cloud Developer</div>
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-600/10 to-transparent border border-emerald-500/20 text-center">
+            <div className="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2">Google</div>
+            <div className="text-sm text-muted-foreground">Data Analytics Certificate</div>
           </div>
           <div className="p-6 rounded-2xl bg-gradient-to-br from-cyan-600/10 to-transparent border border-cyan-500/20 text-center">
-            <div className="text-3xl font-bold gradient-text mb-2">Meta</div>
-            <div className="text-sm text-muted-foreground">Frontend Developer</div>
+            <div className="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2">Tableau</div>
+            <div className="text-sm text-muted-foreground">Desktop Specialist</div>
+          </div>
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-teal-600/10 to-transparent border border-teal-500/20 text-center">
+            <div className="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2">Microsoft</div>
+            <div className="text-sm text-muted-foreground">Power BI Data Analyst</div>
           </div>
         </div>
       </div>
