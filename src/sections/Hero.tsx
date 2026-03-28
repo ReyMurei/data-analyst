@@ -102,7 +102,7 @@ export default function Hero() {
 
         <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
           Hi, I'm{' '}
-          <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Your Name</span>
+          <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Audrey Murigi</span>
         </h1>
 
         <p className="text-xl md:text-2xl text-muted-foreground mb-4 font-light">
