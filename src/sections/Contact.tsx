@@ -10,19 +10,19 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'your.email@example.com',
-    href: 'mailto:your.email@example.com',
+    value: 'audreymurigi4@gmail.com',
+    href: 'mailto:audreymurigi4@gmail.com',
   },
   {
     icon: Phone,
     label: 'Phone',
-    value: '+1 (555) 123-4567',
-    href: 'tel:+15551234567',
+    value: '+254 747732005',
+    href: 'tel:+254747732005',
   },
   {
     icon: MapPin,
     label: 'Location',
-    value: 'San Francisco, CA',
+    value: 'Nairobi, KE',
     href: '#',
   },
 ];
