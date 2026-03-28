@@ -6,26 +6,43 @@
 
 @layer base {
   :root {
+    /* Light theme values */
+    --background: 210 40% 98%;        /* Light gray/white */
+    --foreground: 222 47% 11%;        /* Dark text */
+    --card: 0 0% 100%;                /* Pure white cards */
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 160 84% 39%;           /* Emerald-600 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;         /* Light gray */
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;  /* Gray-500 */
+    --accent: 160 84% 39%;            /* Emerald */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;            /* Light borders */
+    --input: 214 32% 91%;
+    --ring: 160 84% 39%;              /* Emerald ring */
+    --radius: 0.625rem;
+  }
+
+  /* Optional: Dark mode if you want to keep it */
+  .dark {
     --background: 222 47% 6%;
     --foreground: 210 40% 98%;
     --card: 222 47% 8%;
     --card-foreground: 210 40% 98%;
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
     --primary: 250 95% 60%;
-    --primary-foreground: 210 40% 98%;
     --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
     --accent: 250 95% 60%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
     --border: 217 33% 20%;
     --input: 217 33% 20%;
     --ring: 250 95% 60%;
-    --radius: 0.625rem;
   }
 }
 
@@ -45,7 +62,8 @@
 @layer utilities {
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #06b6d4 100%);
+    /* Updated to emerald/cyan for data analyst theme */
+    background-image: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #0ea5e9 100%);
   }
   
   .gradient-border {
@@ -58,7 +76,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, #8b5cf6, #3b82f6, #06b6d4);
+    background: linear-gradient(135deg, #10b981, #06b6d4, #0ea5e9);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -66,30 +84,30 @@
   }
   
   .glow {
-    box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.3);
   }
   
   .glow-strong {
-    box-shadow: 0 0 60px -10px rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 60px -10px rgba(16, 185, 129, 0.5);
   }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Light theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(222 47% 6%);
+  background: hsl(210 40% 96%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(217 33% 25%);
+  background: hsl(215 20% 65%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(250 95% 60%);
+  background: hsl(160 84% 39%);
 }
 
 /* Animation keyframes */
