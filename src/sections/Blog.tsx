@@ -4,6 +4,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Calendar, Clock, ArrowRight, Search, ArrowLeft } from 'lucide-react';
 
+// Helper function to create URL-friendly slug from title
+function createSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-')         // Replace spaces with hyphens
+    .replace(/-+/g, '-');          // Remove multiple consecutive hyphens
+}
+
 const blogPosts = [
   {
     id: 1,
@@ -214,10 +223,12 @@ export default function Blog() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      const match = hash.match(/#blog\/(\d+)/);
+      // Match #blog/slug-name pattern
+      const match = hash.match(/#blog\/(.+)/);
       if (match) {
-        const postId = parseInt(match[1]);
-        const post = blogPosts.find(p => p.id === postId);
+        const slug = match[1];
+        // Find post by matching slug
+        const post = blogPosts.find(p => createSlug(p.title) === slug);
         if (post) {
           setSelectedPost(post);
         }
@@ -234,7 +245,8 @@ export default function Blog() {
   // Update URL when post changes
   useEffect(() => {
     if (selectedPost) {
-      window.location.hash = `#blog/${selectedPost.id}`;
+      const slug = createSlug(selectedPost.title);
+      window.location.hash = `#blog/${slug}`;
     } else if (window.location.hash.includes('/')) {
       window.location.hash = '#blog';
     }
@@ -281,17 +293,16 @@ export default function Blog() {
           </div>
 
           <article className="min-h-screen">
-            {/* Hero Image - NO FADE, clean edges */}
+            {/* Hero Image - NO FADE */}
             <div className="relative h-[50vh] w-full overflow-hidden">
               <img 
                 src={selectedPost.image} 
                 alt={selectedPost.title}
                 className="w-full h-full object-cover"
               />
-              {/* NO gradient overlay - image is clean */}
             </div>
 
-            {/* Title Section - Below image, not overlaid */}
+            {/* Title Section */}
             <div className="bg-background border-b border-border">
               <div className="max-w-4xl mx-auto px-6 md:px-12 py-8 md:py-12">
                 <div className="flex flex-wrap items-center gap-3 mb-4">
