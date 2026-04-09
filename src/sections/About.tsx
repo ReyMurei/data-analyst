@@ -5,7 +5,6 @@ const stats = [
   { label: 'Years Experience', value: 2 },
   { label: 'Datasets Analyzed', value: 10 },
   { label: 'Insights Delivered', value: 10 },
-  { label: 'Business Impact', value: 10 },
 ];
 
 const services = [
