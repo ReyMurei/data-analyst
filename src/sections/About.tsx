@@ -126,8 +126,8 @@ export default function About() {
             <div>
               <h3 className="text-2xl md:text-3xl font-bold mb-6">My Analytical Journey</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                With over 5 years of experience in data analytics, I've helped organizations 
-                across finance, healthcare, and e-commerce sectors unlock the power of their data.
+                With over 2 years of experience in data analytics, I've helped organizations 
+                within Non- profit NGOs unlock the power of their data.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 My expertise spans SQL, Python, R, Tableau, and Power BI. I specialize in 
