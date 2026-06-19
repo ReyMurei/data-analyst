@@ -4,21 +4,21 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Calendar, Clock, ArrowRight, Search, ExternalLink } from 'lucide-react';
 
-const EXTERNAL_BLOG_URL = 'https://your-blog-site.com'; // <-- REPLACE WITH YOUR ACTUAL BLOG URL
+const EXTERNAL_BLOG_URL = 'https://datahackstudio.hashnode.dev/'; // <-- REPLACE WITH YOUR ACTUAL BLOG URL
 
 const blogPosts = [
   {
     id: 1,
-    title: 'Predicting Customer Churn: A Machine Learning Approach',
-    excerpt: 'How I built a Random Forest classifier to identify at-risk customers with 89% accuracy, saving the company $500K in retention costs.',
+    title: 'Behind Every Great Dashboard: The Power of Data Modeling',
+    excerpt: 'Data modeling is the foundation of effective analytics, turning raw data into structured insights for better decisions. This article explains how it drives accurate dashboards, reliable reports, and scalable data systems from design to implementation.',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop',
-    category: 'Machine Learning',
-    tags: ['Python', 'scikit-learn', 'Pandas', 'Classification'],
+    category: 'SQL',
+    tags: ['Databases', 'Data Modeling', 'Database Schemas'],
     author: 'Audrey Murigi',
     date: 'Mar 15, 2024',
-    readTime: '8 min read',
+    readTime: '7 min read',
     featured: true,
-    externalUrl: `${EXTERNAL_BLOG_URL}/predicting-customer-churn`, // <-- Your article URL
+    externalUrl: `${https://datahackstudio.hashnode.dev/behind-every-great-dashboard-the-power-of-data-modeling}/data-modeling`, // <-- Your article URL
   },
 ];
 
