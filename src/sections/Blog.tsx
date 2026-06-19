@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Calendar, Clock, ArrowRight, Search, ExternalLink } from 'lucide-react';
 
-const EXTERNAL_BLOG_URL = 'https://datahackstudio.hashnode.dev/'; // <-- REPLACE WITH YOUR ACTUAL BLOG URL
+const EXTERNAL_BLOG_URL = 'https://datahackstudio.hashnode.dev';
 
 const blogPosts = [
   {
@@ -18,7 +18,7 @@ const blogPosts = [
     date: 'Mar 15, 2024',
     readTime: '7 min read',
     featured: true,
-    externalUrl: `${https://datahackstudio.hashnode.dev/behind-every-great-dashboard-the-power-of-data-modeling}/data-modeling`, // <-- Your article URL
+    externalUrl: `${EXTERNAL_BLOG_URL}/behind-every-great-dashboard-the-power-of-data-modeling`,
   },
 ];
 
