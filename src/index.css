@@ -6,43 +6,27 @@
 
 @layer base {
   :root {
-    /* Light theme values */
-    --background: 210 40% 98%;        /* Light gray/white */
-    --foreground: 222 47% 11%;        /* Dark text */
-    --card: 0 0% 100%;                /* Pure white cards */
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 160 84% 39%;           /* Emerald-600 */
+    /* Dark professional theme */
+    --background: 220 20% 4%;           /* Deep charcoal */
+    --foreground: 210 20% 96%;            /* Soft white */
+    --card: 220 18% 8%;                  /* Slightly lighter charcoal */
+    --card-foreground: 210 20% 96%;
+    --popover: 220 18% 8%;
+    --popover-foreground: 210 20% 96%;
+    --primary: 160 84% 39%;              /* Emerald-600 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;         /* Light gray */
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;  /* Gray-500 */
-    --accent: 160 84% 39%;            /* Emerald */
+    --secondary: 220 14% 14%;            /* Dark gray */
+    --secondary-foreground: 210 20% 96%;
+    --muted: 220 14% 14%;
+    --muted-foreground: 215 16% 60%;     /* Softer gray */
+    --accent: 160 84% 39%;               /* Emerald */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-    --border: 214 32% 91%;            /* Light borders */
-    --input: 214 32% 91%;
-    --ring: 160 84% 39%;              /* Emerald ring */
+    --border: 220 14% 18%;               /* Subtle borders */
+    --input: 220 14% 18%;
+    --ring: 160 84% 39%;                 /* Emerald ring */
     --radius: 0.625rem;
-  }
-
-  /* Optional: Dark mode if you want to keep it */
-  .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
-    --primary: 250 95% 60%;
-    --secondary: 217 33% 17%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 250 95% 60%;
-    --border: 217 33% 20%;
-    --input: 217 33% 20%;
-    --ring: 250 95% 60%;
   }
 }
 
@@ -62,8 +46,7 @@
 @layer utilities {
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    /* Updated to emerald/cyan for data analyst theme */
-    background-image: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #0ea5e9 100%);
+    background-image: linear-gradient(135deg, #34d399 0%, #22d3ee 50%, #38bdf8 100%);
   }
   
   .gradient-border {
@@ -76,7 +59,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, #10b981, #06b6d4, #0ea5e9);
+    background: linear-gradient(135deg, #34d399, #22d3ee, #38bdf8);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -84,25 +67,25 @@
   }
   
   .glow {
-    box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 0 40px -10px rgba(52, 211, 153, 0.2);
   }
   
   .glow-strong {
-    box-shadow: 0 0 60px -10px rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 60px -10px rgba(52, 211, 153, 0.35);
   }
 }
 
-/* Custom scrollbar - Light theme */
+/* Custom scrollbar - Dark theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(210 40% 96%);
+  background: hsl(220 20% 6%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(215 20% 65%);
+  background: hsl(220 14% 22%);
   border-radius: 4px;
 }
 
@@ -117,8 +100,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
 }
 
 .animate-float {
@@ -126,5 +109,5 @@
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+  animation: pulse-glow 4s ease-in-out infinite;
 }
