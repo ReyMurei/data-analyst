@@ -6,26 +6,26 @@
 
 @layer base {
   :root {
-    /* Dark professional theme */
-    --background: 220 20% 4%;           /* Deep charcoal */
-    --foreground: 210 20% 96%;            /* Soft white */
-    --card: 220 18% 8%;                  /* Slightly lighter charcoal */
-    --card-foreground: 210 20% 96%;
-    --popover: 220 18% 8%;
-    --popover-foreground: 210 20% 96%;
-    --primary: 160 84% 39%;              /* Emerald-600 */
+    /* Warm cream editorial theme */
+    --background: 36 33% 97%;           /* Warm cream #faf8f5 */
+    --foreground: 30 10% 10%;            /* Soft black #1a1a1a */
+    --card: 0 0% 100%;                   /* Pure white */
+    --card-foreground: 30 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 10% 10%;
+    --primary: 160 84% 39%;             /* Emerald-600 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 14%;            /* Dark gray */
-    --secondary-foreground: 210 20% 96%;
-    --muted: 220 14% 14%;
-    --muted-foreground: 215 16% 60%;     /* Softer gray */
-    --accent: 160 84% 39%;               /* Emerald */
+    --secondary: 36 25% 94%;            /* Warm light gray */
+    --secondary-foreground: 30 10% 10%;
+    --muted: 36 25% 94%;
+    --muted-foreground: 30 8% 45%;        /* Warm gray */
+    --accent: 160 84% 39%;              /* Emerald */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 14% 18%;               /* Subtle borders */
-    --input: 220 14% 18%;
-    --ring: 160 84% 39%;                 /* Emerald ring */
+    --border: 36 20% 90%;                /* Warm subtle borders */
+    --input: 36 20% 90%;
+    --ring: 160 84% 39%;
     --radius: 0.625rem;
   }
 }
@@ -46,7 +46,7 @@
 @layer utilities {
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #34d399 0%, #22d3ee 50%, #38bdf8 100%);
+    background-image: linear-gradient(135deg, #059669 0%, #0891b2 50%, #0284c7 100%);
   }
   
   .gradient-border {
@@ -59,7 +59,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, #34d399, #22d3ee, #38bdf8);
+    background: linear-gradient(135deg, #059669, #0891b2, #0284c7);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -67,25 +67,25 @@
   }
   
   .glow {
-    box-shadow: 0 0 40px -10px rgba(52, 211, 153, 0.2);
+    box-shadow: 0 0 40px -10px rgba(5, 150, 105, 0.15);
   }
   
   .glow-strong {
-    box-shadow: 0 0 60px -10px rgba(52, 211, 153, 0.35);
+    box-shadow: 0 0 60px -10px rgba(5, 150, 105, 0.25);
   }
 }
 
-/* Custom scrollbar - Dark theme */
+/* Custom scrollbar - Warm theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(220 20% 6%);
+  background: hsl(36 25% 94%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(220 14% 22%);
+  background: hsl(36 15% 80%);
   border-radius: 4px;
 }
 
@@ -100,8 +100,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
 .animate-float {
@@ -109,5 +109,5 @@
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
+  animation: pulse-glow 3s ease-in-out infinite;
 }
