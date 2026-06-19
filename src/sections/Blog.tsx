@@ -11,7 +11,7 @@ const blogPosts = [
     id: 1,
     title: 'Behind Every Great Dashboard: The Power of Data Modeling',
     excerpt: 'Data modeling is the foundation of effective analytics, turning raw data into structured insights for better decisions. This article explains how it drives accurate dashboards, reliable reports, and scalable data systems from design to implementation.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop',
+    image: 'https://datahackstudio.hashnode.dev/_next/image?url=https%3A%2F%2Fcdn.hashnode.com%2Fuploads%2Fcovers%2F6a35128ace7a819fc76190a5%2Fca9682c9-d67b-4beb-af0a-80ca8acfbcfe.png&w=3840&q=75',
     category: 'SQL',
     tags: ['Databases', 'Data Modeling', 'Database Schemas'],
     author: 'Audrey Murigi',
