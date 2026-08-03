@@ -18,41 +18,41 @@ const projects = [
     title: 'Superstore Sales Dashboard',
     description: 'Interactive Power BI dashboard analyzing 9,994 sales records across Furniture, Office Supplies, and Technology categories. Features shipping analysis, discount impact assessment, and regional performance metrics with dynamic filtering.',
     content: `
-## Project Overview
+Project Overview
 
 Built a comprehensive sales analytics solution using Power BI that transformed raw Superstore data into actionable business insights across three interconnected reports.
 
-## Key Features
-- **3 Interactive Reports:** Sales Overview, Shipping & Delivery Analysis, Discount & Profitability Deep Dive
-- **Dynamic Filtering:** Slicers for Region, Category, Segment, and Ship Mode across all pages
-- **Shipping Analysis:** Calculated shipping duration (Order Date vs Ship Date) with breakdown by Category, Location, Segment, and Quantity
-- **Discount Impact Assessment:** Identified that all three categories (Furniture, Office Supplies, Technology) become unprofitable when discounts are applied (avg 48.1%, range 10%-80%)
-- **Geographic Visualization:** Filled map showing sales and shipping performance by state
-- **Custom DAX Measures:** Shipping Days, Profit Margin, Discount Bins, Quantity Bins
+Key Features
+- 2 Interactive Reports: Sales Overview, Shipping & Delivery Analysis
+- Dynamic Filtering: Slicers for Region, Category, Segment, and Ship Mode across all pages
+- Shipping Analysis: Calculated shipping duration (Order Date vs Ship Date) with breakdown by Category, Location, Segment, and Quantity
+- Discount Impact Assessment: Identified that all three categories (Furniture, Office Supplies, Technology) become unprofitable when discounts are applied (avg 48.1%, range 10%-80%)
+- Geographic Visualization: Filled map showing sales and shipping performance by state
+- Custom DAX Measures: Shipping Days, Profit Margin, Discount Bins, Quantity Bins
 
-## Data Cleaning & Preparation
+Data Cleaning & Preparation
 - Loaded CSV via Power Query
 - Fixed date formats and removed duplicates
 - Created calculated columns: Shipping Days, Quantity Bin, Discount Bin, Profit Margin
 - Standardized text fields and handled blank values
 - Verified data types for all columns
 
-## Key Findings
-- **West region** leads in total sales but **East region** has the highest profit margin
-- **Technology** is the most profitable category; **Furniture** has the lowest margins
-- **All negative profits have discounts applied** — average discount on unprofitable orders is 48.1%
-- **Shipping delays correlate with lower profit** — orders with >5 day shipping show reduced profitability
-- **California and New York** are top-performing states
+Key Findings
+- West region leads in total sales but East region has the highest profit margin
+- Technology is the most profitable category; Furniture has the lowest margins
+- All negative profits have discounts applied — average discount on unprofitable orders is 48.1%
+- Shipping delays correlate with lower profit — orders with >5 day shipping show reduced profitability
+- California and New York are top-performing states
 - Sales show strong seasonal patterns with Q4 peaks
 
-## Recommendations
+Recommendations
 - Cap discounts at 15% for Furniture, 20% for Office Supplies, 25% for Technology
 - Invest in Technology category expansion, particularly in the East region
 - Review Furniture pricing strategy — reduce discounts or increase prices
 - Prepare inventory for Q4 seasonal surge, especially in CA and NY
 - Investigate Central region shipping delays (longest average shipping time)
 
-## Technologies Used
+Technologies Used
 Power BI, Power Query, DAX, Excel
     `,
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
