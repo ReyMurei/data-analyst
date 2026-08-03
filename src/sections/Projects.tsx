@@ -15,151 +15,55 @@ function createSlug(title: string): string {
 const projects = [
   {
     id: 1,
-    title: 'Sales Performance Dashboard',
-    description: 'Interactive Power BI dashboard analyzing $10M+ in sales data, identifying key trends, seasonal patterns, and regional performance metrics.',
+    title: 'Superstore Sales Dashboard',
+    description: 'Interactive Power BI dashboard analyzing 9,994 sales records across Furniture, Office Supplies, and Technology categories. Features shipping analysis, discount impact assessment, and regional performance metrics with dynamic filtering.',
     content: `
 ## Project Overview
 
-Built a comprehensive sales analytics solution that transformed how executives understand business performance.
+Built a comprehensive sales analytics solution using Power BI that transformed raw Superstore data into actionable business insights across three interconnected reports.
 
 ## Key Features
-- Real-time data refresh from SQL Server
-- Drill-through capabilities from summary to transaction level
-- Custom DAX measures for YoY and MoM comparisons
-- Role-based security for regional access
+- **3 Interactive Reports:** Sales Overview, Shipping & Delivery Analysis, Discount & Profitability Deep Dive
+- **Dynamic Filtering:** Slicers for Region, Category, Segment, and Ship Mode across all pages
+- **Shipping Analysis:** Calculated shipping duration (Order Date vs Ship Date) with breakdown by Category, Location, Segment, and Quantity
+- **Discount Impact Assessment:** Identified that all three categories (Furniture, Office Supplies, Technology) become unprofitable when discounts are applied (avg 48.1%, range 10%-80%)
+- **Geographic Visualization:** Filled map showing sales and shipping performance by state
+- **Custom DAX Measures:** Shipping Days, Profit Margin, Discount Bins, Quantity Bins
 
-## Business Impact
-- Reduced reporting time from 3 days to real-time
-- Identified $2M in underperforming product lines
-- Enabled data-driven decisions across 5 regional offices
+## Data Cleaning & Preparation
+- Loaded CSV via Power Query
+- Fixed date formats and removed duplicates
+- Created calculated columns: Shipping Days, Quantity Bin, Discount Bin, Profit Margin
+- Standardized text fields and handled blank values
+- Verified data types for all columns
+
+## Key Findings
+- **West region** leads in total sales but **East region** has the highest profit margin
+- **Technology** is the most profitable category; **Furniture** has the lowest margins
+- **All negative profits have discounts applied** — average discount on unprofitable orders is 48.1%
+- **Shipping delays correlate with lower profit** — orders with >5 day shipping show reduced profitability
+- **California and New York** are top-performing states
+- Sales show strong seasonal patterns with Q4 peaks
+
+## Recommendations
+- Cap discounts at 15% for Furniture, 20% for Office Supplies, 25% for Technology
+- Invest in Technology category expansion, particularly in the East region
+- Review Furniture pricing strategy — reduce discounts or increase prices
+- Prepare inventory for Q4 seasonal surge, especially in CA and NY
+- Investigate Central region shipping delays (longest average shipping time)
 
 ## Technologies Used
-Power BI, SQL Server, DAX, Excel, Python (for data cleaning)
+Power BI, Power Query, DAX, Excel
     `,
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-    tags: ['Power BI', 'SQL', 'DAX', 'Excel'],
-    liveUrl: '#',
+    tags: ['Power BI', 'Power Query', 'DAX', 'Excel'],
+    liveUrl: 'https://app.powerbi.com/reportEmbed?reportId=bdf76caf-e0e5-4237-8da7-94cd5b88c6d8&autoAuth=true&ctid=8fb5a1aa-c3d3-42ce-87df-4dbe3748c2be',
     githubUrl: '#',
     featured: true,
-  },
-  {
-    id: 2,
-    title: 'Customer Churn Prediction',
-    description: 'Machine learning model using Python and scikit-learn to predict customer churn with 89% accuracy, reducing retention costs by 25%.',
-    content: `
-## The Challenge
-Subscription-based SaaS losing 15% customers annually.
-
-## Solution
-Random Forest classifier with 89% precision and 85% recall.
-
-## Tech Stack
-- Python, Pandas, scikit-learn
-- Feature engineering on 50K records
-- Automated retraining pipeline
-
-## Results
-- 25% reduction in retention costs
-- 12% improvement in customer LTV
-    `,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-    tags: ['Python', 'scikit-learn', 'Pandas', 'Matplotlib'],
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: true,
-  },
-  {
-    id: 3,
-    title: 'Market Segmentation Analysis',
-    description: 'K-means clustering analysis on 50K+ customer records to identify distinct segments, enabling targeted marketing campaigns.',
-    content: `
-## Methodology
-K-means clustering with elbow method for optimal k selection.
-
-## Segments Identified
-- High-value frequent buyers
-- Price-sensitive occasional shoppers
-- At-risk churners
-- New customer prospects
-
-## Marketing Impact
-- 35% increase in campaign ROI
-- 20% improvement in email open rates
-    `,
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-    tags: ['R', 'K-means', 'ggplot2', 'Statistics'],
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: false,
-  },
-  {
-    id: 4,
-    title: 'Financial Forecasting Model',
-    description: 'Time series analysis using ARIMA and Prophet to forecast quarterly revenue with 95% confidence intervals for budget planning.',
-    content: `
-## Approach
-Ensemble of ARIMA and Facebook Prophet models.
-
-## Accuracy
-- 95% confidence intervals
-- MAPE under 8% for 3-month forecasts
-
-## Use Cases
-- Budget allocation
-- Headcount planning
-- Investment decisions
-    `,
-    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&fit=crop',
-    tags: ['Python', 'Prophet', 'ARIMA', 'Tableau'],
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: false,
-  },
-  {
-    id: 5,
-    title: 'Supply Chain Optimization',
-    description: 'SQL-based analysis of inventory data identifying bottlenecks, reducing stockouts by 30% and saving $500K annually.',
-    content: `
-## Problem
-30% stockout rate causing lost sales and customer dissatisfaction.
-
-## Solution
-SQL analysis identifying reorder point issues and supplier delays.
-
-## Results
-- 30% reduction in stockouts
-- $500K annual savings
-- 15% inventory carrying cost reduction
-    `,
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop',
-    tags: ['SQL', 'Python', 'Pandas', 'Looker'],
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: false,
-  },
-  {
-    id: 6,
-    title: 'A/B Testing Framework',
-    description: 'Statistical hypothesis testing framework for product experiments, analyzing conversion rates and user behavior at scale.',
-    content: `
-## Features
-- Sequential testing (no peeking problems)
-- Automatic sample size calculation
-- Segment-aware analysis
-
-## Scale
-- 50+ experiments running simultaneously
-- 10M+ users in experiment pool
-    `,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-    tags: ['Python', 'SciPy', 'Statsmodels', 'BigQuery'],
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: false,
   },
 ];
 
-const categories = ['All', 'Visualization', 'Machine Learning', 'Statistical Analysis'];
+const categories = ['All', 'Visualization'];
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -214,8 +118,6 @@ export default function Projects() {
     ? projects 
     : projects.filter(p => {
         if (activeCategory === 'Visualization') return p.tags.some(t => ['Power BI', 'Tableau', 'Looker', 'Matplotlib', 'ggplot2'].includes(t));
-        if (activeCategory === 'Machine Learning') return p.tags.some(t => ['scikit-learn', 'K-means', 'Prophet', 'ARIMA', 'SciPy'].includes(t));
-        if (activeCategory === 'Statistical Analysis') return p.tags.some(t => ['Statistics', 'Statsmodels', 'A/B Testing'].includes(t));
         return true;
       });
 
@@ -286,7 +188,7 @@ export default function Projects() {
                     className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gradient-to-r from-emerald-600 to-cyan-600 text-white font-semibold text-lg hover:opacity-90 transition-opacity"
                   >
                     <ExternalLink className="w-5 h-5" />
-                    View Live Demo
+                    View Live Dashboard
                   </a>
                   <a
                     href={selectedProject.githubUrl}
@@ -297,6 +199,25 @@ export default function Projects() {
                     <Github className="w-5 h-5" />
                     View Code
                   </a>
+                </div>
+
+                {/* Power BI Embed */}
+                <div className="mb-16">
+                  <h3 className="text-2xl font-bold mb-6 text-foreground">Live Dashboard</h3>
+                  <div className="w-full overflow-hidden rounded-xl border border-border shadow-lg">
+                    <iframe 
+                      title="Superstore Report" 
+                      width="100%" 
+                      height="541" 
+                      src="https://app.powerbi.com/reportEmbed?reportId=bdf76caf-e0e5-4237-8da7-94cd5b88c6d8&autoAuth=true&ctid=8fb5a1aa-c3d3-42ce-87df-4dbe3748c2be" 
+                      frameBorder="0" 
+                      allowFullScreen={true}
+                      className="w-full"
+                    ></iframe>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-3 text-center">
+                    Interactive Power BI dashboard — use the navigation tabs and slicers to explore the data.
+                  </p>
                 </div>
 
                 {/* Full Content */}
@@ -358,7 +279,7 @@ export default function Projects() {
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  
+
                   {project.featured && (
                     <Badge className="absolute top-4 left-4 bg-emerald-600/90 text-white">
                       Featured
