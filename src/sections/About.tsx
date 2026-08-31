@@ -27,7 +27,7 @@ export default function About() {
         <div className="max-w-3xl mx-auto text-center">
 
           <p className="text-muted-foreground leading-relaxed mb-5">
-            I'm a data analyst with over 1+ years of experience and a genuine curiosity about
+            I'm Audrey, a data analyst with a genuine curiosity about
             how data can be used to understand problems, uncover patterns,
             and support better decisions.
           </p>
@@ -86,16 +86,16 @@ export default function About() {
               </p>
             </div>
 
-            {/* Data Processing */}
+            {/* Data Quality & Validation */}
             <div className="group p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300">
               <div className="w-10 h-10 mb-4 rounded-lg bg-cyan-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <span className="text-xl">⚙️</span>
+                <span className="text-xl">✅</span>
               </div>
               <h4 className="text-lg font-semibold mb-2">
-                Data Processing
+                Data Quality & Validation
               </h4>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Cleaning, transforming, and validating data to remove inconsistencies, handle missing values, and prepare datasets for reliable analysis.
+                Cleaning datasets, handling missing values, removing inconsistencies, and building validation rules to ensure data is accurate and reliable.
               </p>
             </div>
 
@@ -108,7 +108,7 @@ export default function About() {
                 Data Analysis
               </h4>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Exploring datasets to uncover trends, patterns, and correlations that reveal what's really happening beneath the surface.
+                Exploring datasets to uncover trends, patterns, and correlations using statistical analysis, segmentation, and hypothesis testing to reveal what's really happening.
               </p>
             </div>
 
@@ -121,20 +121,33 @@ export default function About() {
                 Data Visualization
               </h4>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Designing dashboards, charts, and reports that make complex information easy to understand and act on at a glance.
+                Designing dashboards, charts, and interactive reports that make complex information easy to understand and act on at a glance.
               </p>
             </div>
 
-            {/* Data Automation */}
-            <div className="group p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300 sm:col-span-2 lg:col-span-1">
+            {/* Reporting & Documentation */}
+            <div className="group p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300">
               <div className="w-10 h-10 mb-4 rounded-lg bg-emerald-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <span className="text-xl">⚡</span>
+                <span className="text-xl">📝</span>
               </div>
               <h4 className="text-lg font-semibold mb-2">
-                Data Automation
+                Reporting & Documentation
               </h4>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Building automated workflows and pipelines that reduce manual tasks, minimise errors, and keep reports flowing without constant effort.
+                Creating clear, structured reports and documentation that capture methodology, findings, and recommendations for future reference and transparency.
+              </p>
+            </div>
+
+            {/* Stakeholder Communication & Data Storytelling */}
+            <div className="group p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300">
+              <div className="w-10 h-10 mb-4 rounded-lg bg-cyan-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <span className="text-xl">💬</span>
+              </div>
+              <h4 className="text-lg font-semibold mb-2">
+                Stakeholder Communication
+              </h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Translating technical findings into actionable insights for non-technical teams, using data storytelling to drive understanding and better decisions.
               </p>
             </div>
 
