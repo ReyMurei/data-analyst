@@ -63,31 +63,61 @@ export default function About() {
 
           </div>
 
-          {/* Visual */}
+          {/* Visual - Bento Grid */}
           <div className="relative">
 
-            <div className="aspect-square rounded-3xl bg-gradient-to-br from-emerald-600 to-cyan-600 p-1">
+            <div className="grid grid-cols-2 gap-4">
 
-              <div className="w-full h-full rounded-3xl bg-card flex items-center justify-center">
-
-                <div className="text-center px-8">
-
-                  <div className="text-6xl mb-6">
-                    📊
-                  </div>
-
-                  <h3 className="text-2xl font-bold mb-4">
-                    Data → Understanding
-                  </h3>
-
-                  <p className="text-muted-foreground leading-relaxed">
-                    I believe good analysis isn't just about finding
-                    numbers. It's about understanding what they mean
-                    and communicating that meaning clearly.
-                  </p>
-
+              {/* Data Collection */}
+              <div className="group p-6 rounded-2xl bg-gradient-to-br from-emerald-600/15 to-emerald-600/5 border border-emerald-500/20 backdrop-blur-sm hover:border-emerald-500/40 transition-all duration-300">
+                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
+                  📥
                 </div>
+                <h4 className="font-semibold text-emerald-400 mb-1">
+                  Collect
+                </h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Gathering and structuring raw data from multiple sources
+                </p>
+              </div>
 
+              {/* Analysis */}
+              <div className="group p-6 rounded-2xl bg-gradient-to-br from-cyan-600/15 to-cyan-600/5 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
+                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
+                  🔍
+                </div>
+                <h4 className="font-semibold text-cyan-400 mb-1">
+                  Analyse
+                </h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Finding patterns, trends, and actionable insights
+                </p>
+              </div>
+
+              {/* Visualisation */}
+              <div className="group p-6 rounded-2xl bg-gradient-to-br from-cyan-600/15 to-cyan-600/5 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
+                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
+                  📊
+                </div>
+                <h4 className="font-semibold text-cyan-400 mb-1">
+                  Visualise
+                </h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Building dashboards and reports that tell the story
+                </p>
+              </div>
+
+              {/* Automation */}
+              <div className="group p-6 rounded-2xl bg-gradient-to-br from-emerald-600/15 to-emerald-600/5 border border-emerald-500/20 backdrop-blur-sm hover:border-emerald-500/40 transition-all duration-300">
+                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
+                  ⚡
+                </div>
+                <h4 className="font-semibold text-emerald-400 mb-1">
+                  Automate
+                </h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Streamlining workflows and reducing manual work
+                </p>
               </div>
 
             </div>
