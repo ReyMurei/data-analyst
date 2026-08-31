@@ -1,4 +1,3 @@
-```tsx
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -86,12 +85,8 @@ export default function Hero() {
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(other.x, other.y);
 
-            ctx.strokeStyle = `rgba(
-              16,
-              185,
-              129,
-              ${0.2 * (1 - distance / 150)}
-            )`;
+            const opacity = 0.2 * (1 - distance / 150);
+            ctx.strokeStyle = 'rgba(16, 185, 129, ' + opacity + ')';
 
             ctx.stroke();
           }
@@ -249,4 +244,3 @@ export default function Hero() {
     </section>
   );
 }
-```
