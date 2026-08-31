@@ -1,6 +1,15 @@
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowDown, Github, Linkedin, Mail, Database, Youtube } from 'lucide-react';
+import {
+  ArrowDown,
+  Github,
+  Linkedin,
+  Mail,
+  Database,
+  Youtube,
+  BarChart3,
+  Code2,
+} from 'lucide-react';
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -12,19 +21,30 @@ export default function Hero() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const setCanvasSize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
 
-    const particles: { x: number; y: number; vx: number; vy: number; size: number }[] = [];
-    const particleCount = 60;
+    setCanvasSize();
+
+    const particles: {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+    }[] = [];
+
+    const particleCount = 55;
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        size: Math.random() * 1.5 + 0.8,
       });
     }
 
@@ -37,25 +57,43 @@ export default function Hero() {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+        if (particle.x < 0 || particle.x > canvas.width) {
+          particle.vx *= -1;
+        }
 
+        if (particle.y < 0 || particle.y > canvas.height) {
+          particle.vy *= -1;
+        }
+
+        // Particle
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(16, 185, 129, 0.5)'; // Emerald color
+        ctx.arc(
+          particle.x,
+          particle.y,
+          particle.size,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fillStyle = 'rgba(16, 185, 129, 0.45)';
         ctx.fill();
 
-        // Draw connections
+        // Connections
         particles.slice(i + 1).forEach((other) => {
           const dx = particle.x - other.x;
           const dy = particle.y - other.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 150) {
+          if (distance < 140) {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(other.x, other.y);
-            ctx.strokeStyle = `rgba(16, 185, 129, ${0.2 * (1 - distance / 150)})`;
+
+            ctx.strokeStyle = `rgba(16, 185, 129, ${
+              0.16 * (1 - distance / 140)
+            })`;
+
+            ctx.lineWidth = 0.6;
             ctx.stroke();
           }
         });
@@ -66,110 +104,171 @@ export default function Hero() {
 
     animate();
 
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', setCanvasSize);
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', setCanvasSize);
     };
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Particle Canvas */}
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Animated Data Network */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 z-0"
       />
 
-      {/* Gradient Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+      {/* Background Glow */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-600/15 rounded-full blur-3xl animate-pulse-glow" />
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <div className="mb-6 inline-block">
+      <div
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/15 rounded-full blur-3xl animate-pulse-glow"
+        style={{ animationDelay: '1.5s' }}
+      />
+
+      {/* Main Content */}
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+
+        {/* Eyebrow */}
+        <div className="mb-7 inline-flex">
           <span className="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium flex items-center gap-2">
             <Database className="w-4 h-4" />
-            Data-Driven Insights
+            Turning Data Into Decisions
           </span>
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+        {/* Heading */}
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
           Hi, I'm{' '}
-          <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Audrey Murigi</span>
+          <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+            Audrey Murigi
+          </span>
+          .
         </h1>
 
-        <p className="text-xl md:text-2xl text-muted-foreground mb-4 font-light">
-          Data Analyst & Business Intelligence Specialist
+        {/* Role */}
+        <h2 className="text-2xl md:text-3xl font-semibold mb-5">
+          Data Analyst
+          <span className="text-emerald-400"> & </span>
+          Business Intelligence Professional
+        </h2>
+
+        {/* Description */}
+        <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-3xl mx-auto leading-relaxed">
+          I turn raw, messy data into insights that help organizations
+          understand performance, solve problems, and make better decisions.
         </p>
 
-        <p className="text-lg text-muted-foreground/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-          I transform complex data into clear, actionable insights that drive strategic decisions. 
-          Specializing in SQL, Python, Tableau, and predictive analytics to unlock business value.
+        <p className="text-base md:text-lg text-muted-foreground/75 mb-10 max-w-2xl mx-auto leading-relaxed">
+          Experienced in data analysis, reporting, visualization, automation,
+          and data quality using SQL, Python, Power BI, Excel, and modern
+          data tools.
         </p>
 
+        {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+
           <Button
             size="lg"
-            className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8"
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 shadow-lg shadow-emerald-500/20"
+            onClick={() =>
+              document
+                .getElementById('projects')
+                ?.scrollIntoView({ behavior: 'smooth' })
+            }
           >
-            View My Projects
+            <BarChart3 className="w-5 h-5 mr-2" />
+            Explore My Work
           </Button>
+
           <Button
             size="lg"
             variant="outline"
-            className="border-emerald-500/50 hover:bg-emerald-500/10"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="border-emerald-500/40 hover:bg-emerald-500/10 px-8"
+            onClick={() =>
+              document
+                .getElementById('contact')
+                ?.scrollIntoView({ behavior: 'smooth' })
+            }
           >
-            Get In Touch
+            <Mail className="w-5 h-5 mr-2" />
+            Let's Connect
           </Button>
+
+        </div>
+
+        {/* Skills */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {[
+            'SQL',
+            'Python',
+            'Power BI',
+            'Excel',
+            'Power Query',
+            'Data Visualization',
+            'Data Automation',
+          ].map((skill) => (
+            <span
+              key={skill}
+              className="px-3 py-1.5 rounded-full bg-secondary/40 border border-border/50 text-sm text-muted-foreground"
+            >
+              {skill}
+            </span>
+          ))}
         </div>
 
         {/* Social Links */}
         <div className="flex justify-center gap-4">
+
           <a
-            href="https://github.com"
+            href="https://github.com/YOUR_USERNAME"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-colors group"
+            aria-label="GitHub"
+            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 group hover:-translate-y-1"
           >
             <Github className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
           </a>
+
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/YOUR_USERNAME"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-colors group"
+            aria-label="LinkedIn"
+            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 group hover:-translate-y-1"
           >
             <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
           </a>
+
           <a
-            href="https://youtube.com"
+            href="https://youtube.com/@YOUR_USERNAME"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-colors group"
+            aria-label="YouTube"
+            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 group hover:-translate-y-1"
           >
             <Youtube className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
           </a>
+
           <a
             href="mailto:your.email@example.com"
-            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-colors group"
+            aria-label="Email"
+            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 group hover:-translate-y-1"
           >
             <Mail className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
           </a>
+
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <ArrowDown className="w-6 h-6 text-muted-foreground" />
+      <div className="absolute bottom-7 left-1/2 -translate-x-1/2 animate-bounce">
+        <ArrowDown className="w-5 h-5 text-muted-foreground" />
       </div>
     </section>
   );
