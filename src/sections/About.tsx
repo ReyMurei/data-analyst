@@ -24,110 +24,35 @@ export default function About() {
         </div>
 
         {/* Main About Content */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="max-w-3xl mx-auto text-center">
 
-          {/* Personal Introduction */}
-          <div>
+          <p className="text-muted-foreground leading-relaxed mb-5">
+            I'm Audrey, a data analyst with a genuine curiosity about
+            how data can be used to understand problems, uncover patterns,
+            and support better decisions.
+          </p>
 
-            <h3 className="text-2xl md:text-3xl font-bold mb-6">
-              A little about me
-            </h3>
+          <p className="text-muted-foreground leading-relaxed mb-5">
+            My journey into data has grown from working with real-world
+            datasets where information is rarely perfect. I've learned
+            that meaningful analysis starts long before a chart or
+            dashboard — with understanding the question, investigating
+            the data, and making sure the information can be trusted.
+          </p>
 
-            <p className="text-muted-foreground leading-relaxed mb-5">
-              I'm Audrey, a data analyst with a genuine curiosity about
-              how data can be used to understand problems, uncover patterns,
-              and support better decisions.
-            </p>
+          <p className="text-muted-foreground leading-relaxed mb-5">
+            I enjoy the process of taking something messy and unfamiliar,
+            breaking it down, finding the story within it, and turning
+            that story into something clear and useful.
+          </p>
 
-            <p className="text-muted-foreground leading-relaxed mb-5">
-              My journey into data has grown from working with real-world
-              datasets where information is rarely perfect. I've learned
-              that meaningful analysis starts long before a chart or
-              dashboard — with understanding the question, investigating
-              the data, and making sure the information can be trusted.
-            </p>
-
-            <p className="text-muted-foreground leading-relaxed mb-5">
-              I enjoy the process of taking something messy and unfamiliar,
-              breaking it down, finding the story within it, and turning
-              that story into something clear and useful.
-            </p>
-
-            <p className="text-muted-foreground leading-relaxed">
-              I'm continuously learning and expanding my understanding of
-              analytics, data engineering, and business intelligence. What
-              keeps me interested is that there's always another problem to
-              solve, another dataset to explore, and another way to make
-              information more useful.
-            </p>
-
-          </div>
-
-          {/* Visual - Bento Grid */}
-          <div className="relative">
-
-            <div className="grid grid-cols-2 gap-4">
-
-              {/* Data Collection */}
-              <div className="group p-6 rounded-2xl bg-gradient-to-br from-emerald-600/15 to-emerald-600/5 border border-emerald-500/20 backdrop-blur-sm hover:border-emerald-500/40 transition-all duration-300">
-                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                  📥
-                </div>
-                <h4 className="font-semibold text-emerald-400 mb-1">
-                  Collect
-                </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Gathering and structuring raw data from multiple sources
-                </p>
-              </div>
-
-              {/* Analysis */}
-              <div className="group p-6 rounded-2xl bg-gradient-to-br from-cyan-600/15 to-cyan-600/5 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
-                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                  🔍
-                </div>
-                <h4 className="font-semibold text-cyan-400 mb-1">
-                  Analyse
-                </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Finding patterns, trends, and actionable insights
-                </p>
-              </div>
-
-              {/* Visualisation */}
-              <div className="group p-6 rounded-2xl bg-gradient-to-br from-cyan-600/15 to-cyan-600/5 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
-                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                  📊
-                </div>
-                <h4 className="font-semibold text-cyan-400 mb-1">
-                  Visualise
-                </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Building dashboards and reports that tell the story
-                </p>
-              </div>
-
-              {/* Automation */}
-              <div className="group p-6 rounded-2xl bg-gradient-to-br from-emerald-600/15 to-emerald-600/5 border border-emerald-500/20 backdrop-blur-sm hover:border-emerald-500/40 transition-all duration-300">
-                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                  ⚡
-                </div>
-                <h4 className="font-semibold text-emerald-400 mb-1">
-                  Automate
-                </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Streamlining workflows and reducing manual work
-                </p>
-              </div>
-
-            </div>
-
-            {/* Decorative Elements */}
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-emerald-600/20 rounded-full blur-3xl" />
-
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-cyan-600/20 rounded-full blur-3xl" />
-
-          </div>
+          <p className="text-muted-foreground leading-relaxed">
+            I'm continuously learning and expanding my understanding of
+            analytics, data engineering, and business intelligence. What
+            keeps me interested is that there's always another problem to
+            solve, another dataset to explore, and another way to make
+            information more useful.
+          </p>
 
         </div>
 
