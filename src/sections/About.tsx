@@ -27,7 +27,7 @@ export default function About() {
         <div className="max-w-3xl mx-auto text-center">
 
           <p className="text-muted-foreground leading-relaxed mb-5">
-            I'm Audrey, a data analyst with a genuine curiosity about
+            I'm a data analyst with over 1+ years of experience and a genuine curiosity about
             how data can be used to understand problems, uncover patterns,
             and support better decisions.
           </p>
