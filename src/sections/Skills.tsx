@@ -1,34 +1,37 @@
 import {
   Database,
-  FileSpreadsheet,
+  Server,
+  Cloud,
+  Eye,
   BarChart3,
-  Code,
-  Workflow,
-  Table,
+  Monitor,
+  BookOpen,
+  FileSpreadsheet,
+  Terminal,
   GitBranch,
-  Calculator,
+  ClipboardList,
   Globe,
+  Workflow,
+  FileText,
+  Code,
 } from 'lucide-react';
 
 const tools = [
-  { name: 'SQL', icon: Database, delay: '0s', duration: '4.2s' },
-  { name: 'Python', icon: Code, delay: '0.5s', duration: '3.8s' },
-  { name: 'Excel', icon: FileSpreadsheet, delay: '1s', duration: '4.5s' },
-  { name: 'Power BI', icon: BarChart3, delay: '1.5s', duration: '3.5s' },
-  { name: 'Power Query', icon: Workflow, delay: '0.3s', duration: '4s' },
-  { name: 'PostgreSQL', icon: Database, delay: '0.8s', duration: '4.3s' },
-  { name: 'Pandas', icon: Code, delay: '1.2s', duration: '3.6s' },
-  { name: 'R', icon: Calculator, delay: '0.6s', duration: '4.1s' },
-  { name: 'DAX', icon: BarChart3, delay: '1.8s', duration: '3.9s' },
-  { name: 'Git', icon: GitBranch, delay: '0.2s', duration: '4.4s' },
-  { name: 'KoboToolbox', icon: Table, delay: '1.4s', duration: '3.7s' },
-  { name: 'Power Automate', icon: Workflow, delay: '0.9s', duration: '4.6s' },
-  { name: 'Google Sheets', icon: FileSpreadsheet, delay: '0.4s', duration: '3.5s' },
-  { name: 'Stata', icon: Calculator, delay: '1.6s', duration: '4s' },
-  { name: 'Zapier', icon: Workflow, delay: '0.7s', duration: '4.2s' },
-  { name: 'MySQL', icon: Database, delay: '1.1s', duration: '3.8s' },
-  { name: 'ODK', icon: Globe, delay: '0.1s', duration: '4.5s' },
-  { name: 'CommCare', icon: Globe, delay: '1.3s', duration: '3.6s' },
+  { name: 'Microsoft SQL', icon: Database, delay: '0s', duration: '4.2s' },
+  { name: 'PostgreSQL', icon: Server, delay: '0.4s', duration: '3.8s' },
+  { name: 'BigQuery', icon: Cloud, delay: '0.8s', duration: '4.5s' },
+  { name: 'Looker', icon: Eye, delay: '1.2s', duration: '3.6s' },
+  { name: 'Power BI', icon: BarChart3, delay: '0.2s', duration: '4s' },
+  { name: 'PowerPoint', icon: Monitor, delay: '1s', duration: '3.9s' },
+  { name: 'Jupyter Notebook', icon: BookOpen, delay: '0.6s', duration: '4.3s' },
+  { name: 'Excel', icon: FileSpreadsheet, delay: '1.4s', duration: '3.7s' },
+  { name: 'Google Colab', icon: Terminal, delay: '0.3s', duration: '4.1s' },
+  { name: 'Git', icon: GitBranch, delay: '1.6s', duration: '3.5s' },
+  { name: 'Google Sheets', icon: FileSpreadsheet, delay: '0.5s', duration: '4.4s' },
+  { name: 'Google Forms', icon: ClipboardList, delay: '1.1s', duration: '3.8s' },
+  { name: 'KoboToolbox', icon: Globe, delay: '0.9s', duration: '4.6s' },
+  { name: 'Power Automate', icon: Workflow, delay: '0.1s', duration: '3.9s' },
+  { name: 'MS Word', icon: FileText, delay: '1.3s', duration: '4.2s' },
 ];
 
 export default function Skills() {
@@ -70,7 +73,7 @@ export default function Skills() {
             return (
               <div
                 key={tool.name}
-                className="group flex items-center gap-2.5 px-5 py-3 rounded-full bg-card/60 border border-border/50 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-emerald-500/10 transition-all duration-300 hover:scale-110 hover:-translate-y-1 cursor-default select-none"
+                className="group flex items-center gap-2.5 px-5 py-3 rounded-full bg-card/60 border border-border/50 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-emerald-500/10 transition-all duration-300 hover:scale-110 cursor-default select-none"
                 style={{
                   animationName: 'float-tool',
                   animationDuration: tool.duration,
