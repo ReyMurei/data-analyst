@@ -1,3 +1,4 @@
+```tsx
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -6,9 +7,8 @@ import {
   Linkedin,
   Mail,
   Database,
-  Youtube,
   BarChart3,
-  Code2,
+  Workflow,
 } from 'lucide-react';
 
 export default function Hero() {
@@ -21,39 +21,27 @@ export default function Hero() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const setCanvasSize = () => {
+    const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
-    setCanvasSize();
+    resizeCanvas();
 
-    const particles: {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-    }[] = [];
-
-    const particleCount = 55;
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
-        size: Math.random() * 1.5 + 0.8,
-      });
-    }
+    const particles = Array.from({ length: 55 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: (Math.random() - 0.5) * 0.25,
+      size: Math.random() * 1.5 + 0.7,
+    }));
 
     let animationId: number;
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach((particle, i) => {
+      particles.forEach((particle, index) => {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
@@ -65,7 +53,7 @@ export default function Hero() {
           particle.vy *= -1;
         }
 
-        // Particle
+        // Data points
         ctx.beginPath();
         ctx.arc(
           particle.x,
@@ -78,8 +66,8 @@ export default function Hero() {
         ctx.fillStyle = 'rgba(16, 185, 129, 0.45)';
         ctx.fill();
 
-        // Connections
-        particles.slice(i + 1).forEach((other) => {
+        // Connections between data points
+        particles.slice(index + 1).forEach((other) => {
           const dx = particle.x - other.x;
           const dy = particle.y - other.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
@@ -90,7 +78,7 @@ export default function Hero() {
             ctx.lineTo(other.x, other.y);
 
             ctx.strokeStyle = `rgba(16, 185, 129, ${
-              0.16 * (1 - distance / 140)
+              0.15 * (1 - distance / 140)
             })`;
 
             ctx.lineWidth = 0.6;
@@ -104,26 +92,32 @@ export default function Hero() {
 
     animate();
 
-    window.addEventListener('resize', setCanvasSize);
+    window.addEventListener('resize', resizeCanvas);
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', setCanvasSize);
+      window.removeEventListener('resize', resizeCanvas);
     };
   }, []);
+
+  const scrollTo = (section: string) => {
+    document
+      .getElementById(section)
+      ?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Animated Data Network */}
+      {/* Animated background */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 z-0"
       />
 
-      {/* Background Glow */}
+      {/* Background glow */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-600/15 rounded-full blur-3xl animate-pulse-glow" />
 
       <div
@@ -131,145 +125,175 @@ export default function Hero() {
         style={{ animationDelay: '1.5s' }}
       />
 
-      {/* Main Content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      {/* Main content */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6">
 
-        {/* Eyebrow */}
-        <div className="mb-7 inline-flex">
-          <span className="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium flex items-center gap-2">
-            <Database className="w-4 h-4" />
-            Turning Data Into Decisions
-          </span>
-        </div>
+        <div className="max-w-4xl mx-auto text-center">
 
-        {/* Heading */}
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
-          Hi, I'm{' '}
-          <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-            Audrey Murigi
-          </span>
-          .
-        </h1>
-
-        {/* Role */}
-        <h2 className="text-2xl md:text-3xl font-semibold mb-5">
-          Data Analyst
-          <span className="text-emerald-400"> & </span>
-          Business Intelligence Professional
-        </h2>
-
-        {/* Description */}
-        <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-3xl mx-auto leading-relaxed">
-          I turn raw, messy data into insights that help organizations
-          understand performance, solve problems, and make better decisions.
-        </p>
-
-        <p className="text-base md:text-lg text-muted-foreground/75 mb-10 max-w-2xl mx-auto leading-relaxed">
-          Experienced in data analysis, reporting, visualization, automation,
-          and data quality using SQL, Python, Power BI, Excel, and modern
-          data tools.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 shadow-lg shadow-emerald-500/20"
-            onClick={() =>
-              document
-                .getElementById('projects')
-                ?.scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            <BarChart3 className="w-5 h-5 mr-2" />
-            Explore My Work
-          </Button>
-
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-emerald-500/40 hover:bg-emerald-500/10 px-8"
-            onClick={() =>
-              document
-                .getElementById('contact')
-                ?.scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            <Mail className="w-5 h-5 mr-2" />
-            Let's Connect
-          </Button>
-
-        </div>
-
-        {/* Skills */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {[
-            'SQL',
-            'Python',
-            'Power BI',
-            'Excel',
-            'Power Query',
-            'Data Visualization',
-            'Data Automation',
-          ].map((skill) => (
-            <span
-              key={skill}
-              className="px-3 py-1.5 rounded-full bg-secondary/40 border border-border/50 text-sm text-muted-foreground"
-            >
-              {skill}
+          {/* Small introduction */}
+          <div className="mb-8 inline-flex">
+            <span className="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium flex items-center gap-2">
+              <Database className="w-4 h-4" />
+              Turning Data Into Decisions
             </span>
-          ))}
-        </div>
+          </div>
 
-        {/* Social Links */}
-        <div className="flex justify-center gap-4">
+          {/* Main heading */}
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
+            I turn{' '}
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+              messy data
+            </span>{' '}
+            into clear decisions.
+          </h1>
 
-          <a
-            href="https://github.com/YOUR_USERNAME"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 group hover:-translate-y-1"
-          >
-            <Github className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
-          </a>
+          {/* Professional title */}
+          <h2 className="text-2xl md:text-3xl font-semibold mb-6">
+            Data Analyst
+            <span className="text-emerald-400"> | </span>
+            Business Intelligence
+          </h2>
 
-          <a
-            href="https://www.linkedin.com/in/YOUR_USERNAME"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 group hover:-translate-y-1"
-          >
-            <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
-          </a>
+          {/* Description */}
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-5">
+            I analyse complex datasets, uncover patterns and trends,
+            and translate findings into practical insights that help
+            organisations understand performance and make better decisions.
+          </p>
 
-          <a
-            href="https://youtube.com/@YOUR_USERNAME"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube"
-            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 group hover:-translate-y-1"
-          >
-            <Youtube className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
-          </a>
+          <p className="text-base md:text-lg text-muted-foreground/70 leading-relaxed max-w-2xl mx-auto mb-10">
+            From data preparation and quality checks to reporting,
+            visualisation and workflow automation, I focus on turning
+            information into something people can actually use.
+          </p>
 
-          <a
-            href="mailto:your.email@example.com"
-            aria-label="Email"
-            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 group hover:-translate-y-1"
-          >
-            <Mail className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
-          </a>
+          {/* CTA buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 shadow-lg shadow-emerald-500/20"
+              onClick={() => scrollTo('projects')}
+            >
+              <BarChart3 className="w-5 h-5 mr-2" />
+              Explore My Work
+            </Button>
+
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-emerald-500/40 hover:bg-emerald-500/10 px-8"
+              onClick={() => scrollTo('about')}
+            >
+              About Me
+            </Button>
+
+          </div>
+
+          {/* Capabilities */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-12">
+
+            {/* Analysis */}
+            <div className="group p-5 rounded-xl bg-secondary/30 border border-border/40 backdrop-blur-sm hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300">
+
+              <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                <Database className="w-5 h-5 text-emerald-400" />
+              </div>
+
+              <h3 className="font-semibold mb-1">
+                Analyse
+              </h3>
+
+              <p className="text-sm text-muted-foreground">
+                Find patterns, trends and performance gaps hidden in data.
+              </p>
+
+            </div>
+
+            {/* Visualise */}
+            <div className="group p-5 rounded-xl bg-secondary/30 border border-border/40 backdrop-blur-sm hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300">
+
+              <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                <BarChart3 className="w-5 h-5 text-cyan-400" />
+              </div>
+
+              <h3 className="font-semibold mb-1">
+                Visualise
+              </h3>
+
+              <p className="text-sm text-muted-foreground">
+                Turn complex information into clear, useful reports and dashboards.
+              </p>
+
+            </div>
+
+            {/* Automate */}
+            <div className="group p-5 rounded-xl bg-secondary/30 border border-border/40 backdrop-blur-sm hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300">
+
+              <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                <Workflow className="w-5 h-5 text-emerald-400" />
+              </div>
+
+              <h3 className="font-semibold mb-1">
+                Improve
+              </h3>
+
+              <p className="text-sm text-muted-foreground">
+                Streamline reporting and reduce repetitive manual work.
+              </p>
+
+            </div>
+
+          </div>
+
+          {/* Social links */}
+          <div className="flex justify-center gap-4">
+
+            <a
+              href="https://github.com/YOUR_USERNAME"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 hover:-translate-y-1 group"
+            >
+              <Github className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/YOUR_USERNAME"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 hover:-translate-y-1 group"
+            >
+              <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
+            </a>
+
+            <a
+              href="mailto:your.email@example.com"
+              aria-label="Email"
+              className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 hover:-translate-y-1 group"
+            >
+              <Mail className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
+            </a>
+
+          </div>
 
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-7 left-1/2 -translate-x-1/2 animate-bounce">
+      {/* Scroll indicator */}
+      <button
+        onClick={() => scrollTo('about')}
+        aria-label="Scroll to about section"
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 animate-bounce"
+      >
         <ArrowDown className="w-5 h-5 text-muted-foreground" />
-      </div>
+      </button>
+
     </section>
   );
 }
+```
+
+This version deliberately **doesn't put your technologies in the hero**. It sells your ability to **analyse, visualise, communicate and improve processes** first. Your projects can then demonstrate *how* you do those things.
