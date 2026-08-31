@@ -1,3 +1,4 @@
+```tsx
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -5,9 +6,8 @@ import {
   Github,
   Linkedin,
   Mail,
-  Database,
   BarChart3,
-  Workflow,
+  Youtube,
 } from 'lucide-react';
 
 export default function Hero() {
@@ -20,27 +20,39 @@ export default function Hero() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const resizeCanvas = () => {
+    const setCanvasSize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
-    resizeCanvas();
+    setCanvasSize();
 
-    const particles = Array.from({ length: 55 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: (Math.random() - 0.5) * 0.25,
-      size: Math.random() * 1.5 + 0.7,
-    }));
+    const particles: {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+    }[] = [];
+
+    const particleCount = 60;
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 2 + 1,
+      });
+    }
 
     let animationId: number;
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach((particle, index) => {
+      particles.forEach((particle, i) => {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
@@ -52,7 +64,6 @@ export default function Hero() {
           particle.vy *= -1;
         }
 
-        // Data points
         ctx.beginPath();
         ctx.arc(
           particle.x,
@@ -62,24 +73,26 @@ export default function Hero() {
           Math.PI * 2
         );
 
-        ctx.fillStyle = 'rgba(16, 185, 129, 0.45)';
+        ctx.fillStyle = 'rgba(16, 185, 129, 0.5)';
         ctx.fill();
 
-        // Connections between data points
-        particles.slice(index + 1).forEach((other) => {
+        particles.slice(i + 1).forEach((other) => {
           const dx = particle.x - other.x;
           const dy = particle.y - other.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 140) {
+          if (distance < 150) {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(other.x, other.y);
 
-            const opacity = 0.15 * (1 - distance / 140);
-            ctx.strokeStyle = 'rgba(16, 185, 129, ' + opacity + ')';
+            ctx.strokeStyle = `rgba(
+              16,
+              185,
+              129,
+              ${0.2 * (1 - distance / 150)}
+            )`;
 
-            ctx.lineWidth = 0.6;
             ctx.stroke();
           }
         });
@@ -90,205 +103,150 @@ export default function Hero() {
 
     animate();
 
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', setCanvasSize);
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', setCanvasSize);
     };
   }, []);
-
-  const scrollTo = (section: string) => {
-    document
-      .getElementById(section)
-      ?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Animated background */}
+      {/* Animated Background */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 z-0"
       />
 
-      {/* Background glow */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-600/15 rounded-full blur-3xl animate-pulse-glow" />
+      {/* Ambient Gradient Orbs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl animate-pulse-glow" />
 
       <div
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/15 rounded-full blur-3xl animate-pulse-glow"
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl animate-pulse-glow"
         style={{ animationDelay: '1.5s' }}
       />
 
-      {/* Main content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6">
+      {/* Hero Content */}
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
 
-        <div className="max-w-4xl mx-auto text-center">
+        {/* Eyebrow */}
+        <div className="mb-6 inline-block">
+          <span className="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium flex items-center gap-2">
+            <BarChart3 className="w-4 h-4" />
+            Turning Data Into Decisions
+          </span>
+        </div>
 
-          {/* Small introduction */}
-          <div className="mb-8 inline-flex">
-            <span className="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium flex items-center gap-2">
-              <Database className="w-4 h-4" />
-              Turning Data Into Decisions
-            </span>
-          </div>
+        {/* Name */}
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+          Hi, I'm{' '}
+          <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+            Audrey Murigi
+          </span>
+        </h1>
 
-          {/* Main heading */}
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
-            I turn{' '}
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              messy data
-            </span>{' '}
-            into clear decisions.
-          </h1>
+        {/* Professional Positioning */}
+        <p className="text-xl md:text-2xl text-muted-foreground mb-5 font-light">
+          Data Analyst | Business Intelligence | Data & Reporting
+        </p>
 
-          {/* Professional title */}
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6">
-            Data Analyst
-            <span className="text-emerald-400"> | </span>
-            Business Intelligence
-          </h2>
+        {/* Value Proposition */}
+        <p className="text-lg md:text-xl text-muted-foreground/80 mb-6 max-w-3xl mx-auto leading-relaxed">
+          I turn complex and messy data into reliable reporting,
+          meaningful insights, and practical recommendations that help
+          organizations make better decisions.
+        </p>
 
-          {/* Description */}
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-5">
-            I analyse complex datasets, uncover patterns and trends,
-            and translate findings into practical insights that help
-            organisations understand performance and make better decisions.
-          </p>
+        {/* Supporting Statement */}
+        <p className="text-base text-muted-foreground/60 mb-10 max-w-2xl mx-auto leading-relaxed">
+          From data collection and transformation to analysis,
+          visualization, and reporting, I build solutions that make
+          information easier to understand and act on.
+        </p>
 
-          <p className="text-base md:text-lg text-muted-foreground/70 leading-relaxed max-w-2xl mx-auto mb-10">
-            From data preparation and quality checks to reporting,
-            visualisation and workflow automation, I focus on turning
-            information into something people can actually use.
-          </p>
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
 
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8"
+            onClick={() =>
+              document
+                .getElementById('projects')
+                ?.scrollIntoView({ behavior: 'smooth' })
+            }
+          >
+            Explore My Work
+          </Button>
 
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 shadow-lg shadow-emerald-500/20"
-              onClick={() => scrollTo('projects')}
-            >
-              <BarChart3 className="w-5 h-5 mr-2" />
-              Explore My Work
-            </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="border-emerald-500/50 hover:bg-emerald-500/10"
+            onClick={() =>
+              document
+                .getElementById('contact')
+                ?.scrollIntoView({ behavior: 'smooth' })
+            }
+          >
+            Let's Connect
+          </Button>
 
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-emerald-500/40 hover:bg-emerald-500/10 px-8"
-              onClick={() => scrollTo('about')}
-            >
-              About Me
-            </Button>
+        </div>
 
-          </div>
+        {/* Social Links */}
+        <div className="flex justify-center gap-4">
 
-          {/* Capabilities */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-12">
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-colors group"
+          >
+            <Github className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
+          </a>
 
-            {/* Analysis */}
-            <div className="group p-5 rounded-xl bg-secondary/30 border border-border/40 backdrop-blur-sm hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300">
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-colors group"
+          >
+            <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
+          </a>
 
-              <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-                <Database className="w-5 h-5 text-emerald-400" />
-              </div>
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-colors group"
+          >
+            <Youtube className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
+          </a>
 
-              <h3 className="font-semibold mb-1">
-                Analyse
-              </h3>
-
-              <p className="text-sm text-muted-foreground">
-                Find patterns, trends and performance gaps hidden in data.
-              </p>
-
-            </div>
-
-            {/* Visualise */}
-            <div className="group p-5 rounded-xl bg-secondary/30 border border-border/40 backdrop-blur-sm hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300">
-
-              <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-cyan-500/10 flex items-center justify-center">
-                <BarChart3 className="w-5 h-5 text-cyan-400" />
-              </div>
-
-              <h3 className="font-semibold mb-1">
-                Visualise
-              </h3>
-
-              <p className="text-sm text-muted-foreground">
-                Turn complex information into clear, useful reports and dashboards.
-              </p>
-
-            </div>
-
-            {/* Automate */}
-            <div className="group p-5 rounded-xl bg-secondary/30 border border-border/40 backdrop-blur-sm hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300">
-
-              <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-                <Workflow className="w-5 h-5 text-emerald-400" />
-              </div>
-
-              <h3 className="font-semibold mb-1">
-                Improve
-              </h3>
-
-              <p className="text-sm text-muted-foreground">
-                Streamline reporting and reduce repetitive manual work.
-              </p>
-
-            </div>
-
-          </div>
-
-          {/* Social links */}
-          <div className="flex justify-center gap-4">
-
-            <a
-              href="https://github.com/YOUR_USERNAME"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 hover:-translate-y-1 group"
-            >
-              <Github className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/YOUR_USERNAME"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 hover:-translate-y-1 group"
-            >
-              <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
-            </a>
-
-            <a
-              href="mailto:your.email@example.com"
-              aria-label="Email"
-              className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-all duration-300 hover:-translate-y-1 group"
-            >
-              <Mail className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
-            </a>
-
-          </div>
+          <a
+            href="mailto:your.email@example.com"
+            aria-label="Email"
+            className="p-3 rounded-full bg-secondary/50 hover:bg-emerald-500/20 transition-colors group"
+          >
+            <Mail className="w-5 h-5 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
+          </a>
 
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <button
-        onClick={() => scrollTo('about')}
-        aria-label="Scroll to about section"
-        className="absolute bottom-7 left-1/2 -translate-x-1/2 animate-bounce"
-      >
-        <ArrowDown className="w-5 h-5 text-muted-foreground" />
-      </button>
-
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <ArrowDown className="w-6 h-6 text-muted-foreground" />
+      </div>
     </section>
   );
 }
+```
