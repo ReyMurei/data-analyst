@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
+  { label: 'Tools', href: '#skills' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -19,7 +18,6 @@ export default function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Update active section based on scroll position
       const sections = navLinks.map((link) => link.href.slice(1));
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
@@ -57,15 +55,7 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <a
-              href="#home"
-              onClick={(e) => handleNavClick(e, '#home')}
-              className="text-xl font-bold gradient-text"
-            >
-              Portfolio
-            </a>
+          <div className="flex items-center justify-center h-16 md:justify-center">
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1">
@@ -76,24 +66,13 @@ export default function Navigation() {
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     activeSection === link.href.slice(1)
-                      ? 'text-purple-400 bg-purple-500/10'
+                      ? 'text-emerald-400 bg-emerald-500/10'
                       : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
                   }`}
                 >
                   {link.label}
                 </a>
               ))}
-            </div>
-
-            {/* CTA Button */}
-            <div className="hidden md:block">
-              <Button
-                size="sm"
-                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Hire Me
-              </Button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -127,23 +106,13 @@ export default function Navigation() {
               onClick={(e) => handleNavClick(e, link.href)}
               className={`text-2xl font-medium transition-colors ${
                 activeSection === link.href.slice(1)
-                  ? 'text-purple-400'
+                  ? 'text-emerald-400'
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               {link.label}
             </a>
           ))}
-          <Button
-            size="lg"
-            className="mt-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
-            onClick={() => {
-              setIsMobileMenuOpen(false);
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            Hire Me
-          </Button>
         </div>
       </div>
     </>
