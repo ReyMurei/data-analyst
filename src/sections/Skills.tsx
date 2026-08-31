@@ -13,7 +13,6 @@ import {
   Globe,
   Workflow,
   FileText,
-  Code,
 } from 'lucide-react';
 
 const tools = [
@@ -47,13 +46,13 @@ export default function Skills() {
         <div className="text-center mb-16">
 
           <span className="text-emerald-400 text-sm font-medium uppercase tracking-wider">
-            Skills
+            My favorite tools
           </span>
 
           <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-6">
-            My favorite{' '}
+            From raw data to{' '}
             <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              tools
+              real insight
             </span>
           </h2>
 
