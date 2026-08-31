@@ -27,7 +27,7 @@ export default function About() {
         <div className="max-w-3xl mx-auto text-center">
 
           <p className="text-muted-foreground leading-relaxed mb-5">
-            I'm Audrey, a data analyst with a genuine curiosity about
+            I'm a data analyst with over 1+ years of experience and a genuine curiosity about
             how data can be used to understand problems, uncover patterns,
             and support better decisions.
           </p>
@@ -56,54 +56,85 @@ export default function About() {
 
         </div>
 
-        {/* What Drives Me */}
+        {/* What I Do */}
         <div className="mt-20">
 
           <div className="text-center mb-10">
 
             <span className="text-emerald-400 text-sm font-medium uppercase tracking-wider">
-              What Drives Me
+              What I Do
             </span>
 
             <h3 className="text-3xl md:text-4xl font-bold mt-3">
-              More than just numbers
+              From raw data to real insights
             </h3>
 
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <div className="p-7 rounded-2xl bg-card/50 border border-border/50">
-              <h4 className="text-xl font-semibold mb-3">
-                Curiosity
+            {/* Data Collection & Management */}
+            <div className="group p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300">
+              <div className="w-10 h-10 mb-4 rounded-lg bg-emerald-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <span className="text-xl">📥</span>
+              </div>
+              <h4 className="text-lg font-semibold mb-2">
+                Data Collection & Management
               </h4>
-
-              <p className="text-muted-foreground leading-relaxed">
-                I like asking why something happened, what the data is
-                really telling us, and what we might be missing.
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Gathering data from multiple sources, organising it into structured formats, and ensuring it's stored securely and accessibly for analysis.
               </p>
             </div>
 
-            <div className="p-7 rounded-2xl bg-card/50 border border-border/50">
-              <h4 className="text-xl font-semibold mb-3">
-                Problem Solving
+            {/* Data Processing */}
+            <div className="group p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300">
+              <div className="w-10 h-10 mb-4 rounded-lg bg-cyan-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <span className="text-xl">⚙️</span>
+              </div>
+              <h4 className="text-lg font-semibold mb-2">
+                Data Processing
               </h4>
-
-              <p className="text-muted-foreground leading-relaxed">
-                I enjoy breaking complicated problems into smaller pieces,
-                finding patterns, and working towards practical solutions.
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Cleaning, transforming, and validating data to remove inconsistencies, handle missing values, and prepare datasets for reliable analysis.
               </p>
             </div>
 
-            <div className="p-7 rounded-2xl bg-card/50 border border-border/50">
-              <h4 className="text-xl font-semibold mb-3">
-                Continuous Learning
+            {/* Data Analysis */}
+            <div className="group p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300">
+              <div className="w-10 h-10 mb-4 rounded-lg bg-emerald-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <span className="text-xl">🔍</span>
+              </div>
+              <h4 className="text-lg font-semibold mb-2">
+                Data Analysis
               </h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Exploring datasets to uncover trends, patterns, and correlations that reveal what's really happening beneath the surface.
+              </p>
+            </div>
 
-              <p className="text-muted-foreground leading-relaxed">
-                Data is constantly evolving, and so am I. I'm always
-                exploring new concepts, techniques, and better ways of
-                working with data.
+            {/* Data Visualization */}
+            <div className="group p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300">
+              <div className="w-10 h-10 mb-4 rounded-lg bg-cyan-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <span className="text-xl">📊</span>
+              </div>
+              <h4 className="text-lg font-semibold mb-2">
+                Data Visualization
+              </h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Designing dashboards, charts, and reports that make complex information easy to understand and act on at a glance.
+              </p>
+            </div>
+
+            {/* Data Automation */}
+            <div className="group p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300 sm:col-span-2 lg:col-span-1">
+              <div className="w-10 h-10 mb-4 rounded-lg bg-emerald-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <span className="text-xl">⚡</span>
+              </div>
+              <h4 className="text-lg font-semibold mb-2">
+                Data Automation
+              </h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Building automated workflows and pipelines that reduce manual tasks, minimise errors, and keep reports flowing without constant effort.
               </p>
             </div>
 
