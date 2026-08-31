@@ -1,142 +1,111 @@
-import { useEffect, useRef, useState } from 'react';
+import {
+  Database,
+  FileSpreadsheet,
+  BarChart3,
+  Code,
+  Workflow,
+  Table,
+  GitBranch,
+  Calculator,
+  Globe,
+} from 'lucide-react';
 
-const skillCategories = [
-  {
-    name: 'Data Analysis',
-    skills: [
-      { name: 'SQL', level: 95 },
-      { name: 'Python (Pandas)', level: 92 },
-      { name: 'Excel/Google Sheets', level: 90 },
-      { name: 'Statistical Analysis', level: 88 },
-    ],
-  },
-  {
-    name: 'Visualization',
-    skills: [
-      { name: 'Tableau', level: 90 },
-      { name: 'Power BI', level: 88 },
-      { name: 'Looker', level: 82 },
-      { name: 'Matplotlib/Seaborn', level: 85 },
-      { name: 'Plotly', level: 80 },
-    ],
-  },
-  {
-    name: 'ML & Engineering',
-    skills: [
-      { name: 'scikit-learn', level: 85 },
-      { name: 'TensorFlow/Keras', level: 75 },
-      { name: 'BigQuery', level: 82 },
-      { name: 'Spark/PySpark', level: 78 },
-      { name: 'Git/Version Control', level: 88 },
-    ],
-  },
+const tools = [
+  { name: 'SQL', icon: Database, delay: '0s', duration: '4.2s' },
+  { name: 'Python', icon: Code, delay: '0.5s', duration: '3.8s' },
+  { name: 'Excel', icon: FileSpreadsheet, delay: '1s', duration: '4.5s' },
+  { name: 'Power BI', icon: BarChart3, delay: '1.5s', duration: '3.5s' },
+  { name: 'Power Query', icon: Workflow, delay: '0.3s', duration: '4s' },
+  { name: 'PostgreSQL', icon: Database, delay: '0.8s', duration: '4.3s' },
+  { name: 'Pandas', icon: Code, delay: '1.2s', duration: '3.6s' },
+  { name: 'R', icon: Calculator, delay: '0.6s', duration: '4.1s' },
+  { name: 'DAX', icon: BarChart3, delay: '1.8s', duration: '3.9s' },
+  { name: 'Git', icon: GitBranch, delay: '0.2s', duration: '4.4s' },
+  { name: 'KoboToolbox', icon: Table, delay: '1.4s', duration: '3.7s' },
+  { name: 'Power Automate', icon: Workflow, delay: '0.9s', duration: '4.6s' },
+  { name: 'Google Sheets', icon: FileSpreadsheet, delay: '0.4s', duration: '3.5s' },
+  { name: 'Stata', icon: Calculator, delay: '1.6s', duration: '4s' },
+  { name: 'Zapier', icon: Workflow, delay: '0.7s', duration: '4.2s' },
+  { name: 'MySQL', icon: Database, delay: '1.1s', duration: '3.8s' },
+  { name: 'ODK', icon: Globe, delay: '0.1s', duration: '4.5s' },
+  { name: 'CommCare', icon: Globe, delay: '1.3s', duration: '3.6s' },
 ];
-
-const technologies = [
-  'SQL', 'Python', 'R', 'Tableau', 'Power BI',
-  'Pandas', 'NumPy', 'scikit-learn', 'TensorFlow', 'BigQuery',
-  'Looker', 'Spark', 'PostgreSQL', 'AWS',
-];
-
-function SkillBar({ name, level, delay }: { name: string; level: number; delay: number }) {
-  const [width, setWidth] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-          setTimeout(() => {
-            setWidth(level);
-          }, delay);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, [level, delay]);
-
-  return (
-    <div ref={ref} className="mb-4">
-      <div className="flex justify-between mb-2">
-        <span className="text-sm font-medium">{name}</span>
-        <span className="text-sm text-muted-foreground">{level}%</span>
-      </div>
-      <div className="h-2 bg-secondary rounded-full overflow-hidden">
-        <div
-          className="h-full bg-gradient-to-r from-emerald-600 to-cyan-600 rounded-full transition-all duration-1000 ease-out"
-          style={{ width: `${width}%` }}
-        />
-      </div>
-    </div>
-  );
-}
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-4 relative">
-      {/* Background Elements */}
+    <section id="skills" className="py-24 px-4 relative overflow-hidden">
+
+      {/* Section Divider */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto relative z-10">
+
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-emerald-400 text-sm font-medium uppercase tracking-wider">Skills</span>
+
+          <span className="text-emerald-400 text-sm font-medium uppercase tracking-wider">
+            Skills
+          </span>
+
           <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-6">
-            Tools &{' '}
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Expertise</span>
+            My favorite{' '}
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+              tools
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive toolkit for extracting insights, building models, and driving data-informed decisions.
+
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Exploring the tools behind my analysis — the ones I rely on
+            to collect, clean, analyse, and present data every day.
           </p>
+
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
-          {skillCategories.map((category, categoryIndex) => (
-            <div
-              key={category.name}
-              className="p-6 rounded-2xl bg-card/50 border border-border/50"
-            >
-              <h3 className="text-xl font-semibold mb-6 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">{category.name}</h3>
-              {category.skills.map((skill, skillIndex) => (
-                <SkillBar
-                  key={skill.name}
-                  name={skill.name}
-                  level={skill.level}
-                  delay={categoryIndex * 200 + skillIndex * 100}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
+        {/* Floating Tools Cloud */}
+        <div className="flex flex-wrap justify-center gap-4 md:gap-5 max-w-4xl mx-auto">
 
-        {/* Tech Stack Cloud */}
-        <div className="text-center">
-          <h3 className="text-2xl font-semibold mb-8">Tech Stack</h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {technologies.map((tech, index) => (
-              <span
-                key={tech}
-                className="px-6 py-3 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300 cursor-default"
+          {tools.map((tool) => {
+            const Icon = tool.icon;
+
+            return (
+              <div
+                key={tool.name}
+                className="group flex items-center gap-2.5 px-5 py-3 rounded-full bg-card/60 border border-border/50 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-emerald-500/10 transition-all duration-300 hover:scale-110 hover:-translate-y-1 cursor-default select-none"
                 style={{
-                  animationDelay: `${index * 50}ms`,
-                  fontSize: `${0.9 + Math.random() * 0.3}rem`,
+                  animationName: 'float-tool',
+                  animationDuration: tool.duration,
+                  animationDelay: tool.delay,
+                  animationIterationCount: 'infinite',
+                  animationTimingFunction: 'ease-in-out',
                 }}
               >
-                {tech}
-              </span>
-            ))}
-          </div>
+                <Icon className="w-4 h-4 text-emerald-400 group-hover:text-cyan-400 transition-colors duration-300" />
+                <span className="text-sm font-medium text-foreground/90 group-hover:text-emerald-400 transition-colors duration-300">
+                  {tool.name}
+                </span>
+              </div>
+            );
+          })}
+
         </div>
-      </div> 
+
+      </div>
+
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-600/5 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Float Animation Keyframes */}
+      <style>{`
+        @keyframes float-tool {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+      `}</style>
+
     </section>
   );
 }
