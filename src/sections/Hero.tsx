@@ -1,4 +1,3 @@
-```tsx
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -77,9 +76,8 @@ export default function Hero() {
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(other.x, other.y);
 
-            ctx.strokeStyle = `rgba(16, 185, 129, ${
-              0.15 * (1 - distance / 140)
-            })`;
+            const opacity = 0.15 * (1 - distance / 140);
+            ctx.strokeStyle = 'rgba(16, 185, 129, ' + opacity + ')';
 
             ctx.lineWidth = 0.6;
             ctx.stroke();
@@ -294,6 +292,3 @@ export default function Hero() {
     </section>
   );
 }
-```
-
-This version deliberately **doesn't put your technologies in the hero**. It sells your ability to **analyse, visualise, communicate and improve processes** first. Your projects can then demonstrate *how* you do those things.
