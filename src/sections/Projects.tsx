@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { ExternalLink, Search, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Search } from 'lucide-react';
 
 const projects = [
   {
@@ -13,7 +13,6 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
     category: 'Visualization',
     tags: ['Power BI', 'Power Query', 'DAX', 'Excel'],
-    date: 'August 2026',
     externalUrl: 'https://app.powerbi.com/reportEmbed?reportId=bdf76caf-e0e5-4237-8da7-94cd5b88c6d8&autoAuth=true&ctid=8fb5a1aa-c3d3-42ce-87df-4dbe3748c2be',
     featured: true,
   },
@@ -37,14 +36,10 @@ export default function Projects() {
   const featuredProject = projects.find((p) => p.featured);
 
   return (
-    <section id="projects" className="py-24 px-4 relative overflow-hidden">
-      {/* Top divider */}
+    <section id="projects" className="py-24 px-4 relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
 
-      {/* Ambient background glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-600/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-emerald-400 text-sm font-medium uppercase tracking-wider">
@@ -56,27 +51,28 @@ export default function Projects() {
               Projects
             </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            A collection of data-driven work — dashboards, analyses, and
-            automated solutions built to solve real problems.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            A showcase of data-driven projects demonstrating expertise in analytics,
+            visualization, and statistical modeling.
           </p>
         </div>
 
-        {/* Search + Filters */}
-        <div className="max-w-2xl mx-auto mb-10">
+        {/* Search */}
+        <div className="max-w-2xl mx-auto mb-8">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
               type="text"
-              placeholder="Search projects, tools, or tags..."
+              placeholder="Search projects, tags, or technologies..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-12 py-6 bg-secondary/30 border-border/50 focus:border-emerald-500/50 focus:ring-emerald-500/20 text-foreground placeholder:text-muted-foreground"
+              className="pl-12 py-6 bg-secondary/30 border-border/50 focus:border-emerald-500/50"
             />
           </div>
         </div>
 
-        <div className="flex justify-center gap-2 mb-14 flex-wrap">
+        {/* Filters */}
+        <div className="flex justify-center gap-2 mb-12 flex-wrap">
           {categories.map((category) => (
             <Button
               key={category}
@@ -94,47 +90,42 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Featured Project — Large Banner Style */}
+        {/* Featured Project */}
         {featuredProject && activeCategory === 'All' && !searchQuery && (
-          <div className="mb-14">
+          <div className="mb-12">
             <a
               href={featuredProject.externalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block rounded-3xl overflow-hidden border border-emerald-500/20 hover:border-emerald-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/10"
+              className="group block bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-emerald-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10"
             >
-              {/* Background Image with overlay */}
-              <div className="relative h-[400px] md:h-[450px]">
-                <img
-                  src={featuredProject.image}
-                  alt={featuredProject.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+              <div className="grid md:grid-cols-2 gap-0">
+                <div className="relative h-64 md:h-auto overflow-hidden">
+                  <img
+                    src={featuredProject.image}
+                    alt={featuredProject.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <Badge className="absolute top-4 left-4 bg-emerald-600 text-white">
+                    Featured
+                  </Badge>
+                </div>
+                <div className="p-8 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4">
-                    <Badge className="bg-emerald-600 text-white border-0">
-                      Featured
-                    </Badge>
                     <Badge
                       variant="secondary"
-                      className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20"
+                      className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
                     >
                       {featuredProject.category}
                     </Badge>
                   </div>
-
-                  <h3 className="text-3xl md:text-5xl font-bold mb-4 group-hover:text-emerald-400 transition-colors duration-300">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 group-hover:text-emerald-400 transition-colors">
                     {featuredProject.title}
                   </h3>
-
-                  <p className="text-lg text-muted-foreground max-w-2xl mb-6 leading-relaxed">
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
                     {featuredProject.description}
                   </p>
-
-                  <div className="flex flex-wrap items-center gap-3">
+                  <div className="flex flex-wrap gap-2">
                     {featuredProject.tags.map((tag) => (
                       <span
                         key={tag}
@@ -143,9 +134,6 @@ export default function Projects() {
                         {tag}
                       </span>
                     ))}
-                    <span className="ml-auto flex items-center gap-2 text-emerald-400 font-medium group-hover:gap-3 transition-all">
-                      View Project <ArrowUpRight className="w-5 h-5" />
-                    </span>
                   </div>
                 </div>
               </div>
@@ -153,71 +141,48 @@ export default function Projects() {
           </div>
         )}
 
-        {/* Projects Grid — Dark Cards */}
+        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects
             .filter((p) => p !== featuredProject || activeCategory !== 'All' || searchQuery)
-            .map((project, index) => (
+            .map((project) => (
               <a
                 key={project.id}
                 href={project.externalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex flex-col rounded-2xl bg-card/40 border border-border/40 backdrop-blur-sm overflow-hidden hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/5"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="group block bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-emerald-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10"
               >
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500/0 via-emerald-500/50 to-cyan-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                {/* Image */}
-                <div className="relative aspect-[16/10] overflow-hidden">
+                <div className="relative aspect-video overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/40 to-transparent" />
-
                   {project.featured && (
-                    <Badge className="absolute top-4 left-4 bg-emerald-600/90 text-white border-0">
+                    <Badge className="absolute top-4 left-4 bg-emerald-600/90 text-white">
                       Featured
                     </Badge>
                   )}
-
-                  {/* Hover overlay icon */}
-                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                    <ExternalLink className="w-4 h-4 text-emerald-400" />
+                  <div className="absolute inset-0 bg-emerald-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-white font-medium flex items-center gap-2 text-lg">
+                      View Project <ExternalLink className="w-5 h-5" />
+                    </span>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6 flex-1 flex flex-col">
-                  <div className="flex items-center justify-between mb-3">
-                    <Badge
-                      variant="secondary"
-                      className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs"
-                    >
-                      {project.category}
-                    </Badge>
-                    <span className="text-xs text-muted-foreground">
-                      {project.date}
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-semibold mb-2 group-hover:text-emerald-400 transition-colors line-clamp-2">
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-emerald-400 transition-colors">
                     {project.title}
                   </h3>
-
-                  <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-1 leading-relaxed">
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
                     {project.description}
                   </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 pt-4 border-t border-border/30">
-                    {project.tags.map((tag) => (
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.slice(0, 3).map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs px-2.5 py-1 rounded-md bg-secondary/50 text-muted-foreground border border-border/30 group-hover:border-emerald-500/20 group-hover:text-emerald-400 transition-colors"
+                        className="px-3 py-1 text-xs rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
                       >
                         {tag}
                       </span>
