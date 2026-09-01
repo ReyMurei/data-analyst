@@ -2,22 +2,20 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { ExternalLink, Search } from 'lucide-react';
-
-const EXTERNAL_PROJECTS_URL = 'https://datahackstudio.hashnode.dev';
+import { ExternalLink, Search, ArrowUpRight } from 'lucide-react';
 
 const projects = [
   {
     id: 1,
     title: 'Superstore Sales Dashboard',
-    description: 'Interactive Power BI dashboard analyzing 9,994 sales records across Furniture, Office Supplies, and Technology categories. Features shipping analysis, discount impact assessment, and regional performance metrics with dynamic filtering.',
+    description:
+      'Interactive Power BI dashboard analyzing 9,994 sales records across Furniture, Office Supplies, and Technology categories. Features shipping analysis, discount impact assessment, and regional performance metrics.',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
     category: 'Visualization',
     tags: ['Power BI', 'Power Query', 'DAX', 'Excel'],
     date: 'August 2026',
-    readTime: '5 min read',
+    externalUrl: 'https://app.powerbi.com/reportEmbed?reportId=bdf76caf-e0e5-4237-8da7-94cd5b88c6d8&autoAuth=true&ctid=8fb5a1aa-c3d3-42ce-87df-4dbe3748c2be',
     featured: true,
-    externalUrl: `${EXTERNAL_PROJECTS_URL}/superstore-sales-dashboard`,
   },
 ];
 
@@ -32,46 +30,53 @@ export default function Projects() {
     const matchesSearch =
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      project.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCategory && matchesSearch;
   });
 
-  const featuredProject = projects.find(p => p.featured);
+  const featuredProject = projects.find((p) => p.featured);
 
   return (
-    <section id="projects" className="py-24 px-4 relative">
+    <section id="projects" className="py-24 px-4 relative overflow-hidden">
+      {/* Top divider */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
 
-      <div className="max-w-6xl mx-auto">
+      {/* Ambient background glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-600/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <span className="text-emerald-600 text-sm font-medium uppercase tracking-wider">Portfolio</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-6 text-gray-900">
+        <div className="text-center mb-16">
+          <span className="text-emerald-400 text-sm font-medium uppercase tracking-wider">
+            Portfolio
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-6">
             Featured{' '}
-            <span className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">Projects</span>
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+              Projects
+            </span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            A showcase of data-driven projects demonstrating expertise in analytics,
-            visualization, and statistical modeling.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            A collection of data-driven work — dashboards, analyses, and
+            automated solutions built to solve real problems.
           </p>
         </div>
 
-        {/* Search Bar */}
-        <div className="max-w-2xl mx-auto mb-8">
+        {/* Search + Filters */}
+        <div className="max-w-2xl mx-auto mb-10">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
               type="text"
-              placeholder="Search projects, tags, or technologies..."
+              placeholder="Search projects, tools, or tags..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-12 py-6 bg-white border-gray-200 focus:border-emerald-500 focus:ring-emerald-500"
+              className="pl-12 py-6 bg-secondary/30 border-border/50 focus:border-emerald-500/50 focus:ring-emerald-500/20 text-foreground placeholder:text-muted-foreground"
             />
           </div>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex justify-center gap-2 mb-12 flex-wrap">
+        <div className="flex justify-center gap-2 mb-14 flex-wrap">
           {categories.map((category) => (
             <Button
               key={category}
@@ -80,8 +85,8 @@ export default function Projects() {
               onClick={() => setActiveCategory(category)}
               className={
                 activeCategory === category
-                  ? 'bg-gradient-to-r from-emerald-600 to-cyan-600 text-white'
-                  : 'border-gray-200 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200'
+                  ? 'bg-gradient-to-r from-emerald-600 to-cyan-600 text-white border-0'
+                  : 'border-emerald-500/30 text-muted-foreground hover:text-emerald-400 hover:border-emerald-500/50 hover:bg-emerald-500/10'
               }
             >
               {category}
@@ -89,42 +94,58 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Featured Project */}
+        {/* Featured Project — Large Banner Style */}
         {featuredProject && activeCategory === 'All' && !searchQuery && (
-          <div className="mb-12">
+          <div className="mb-14">
             <a
               href={featuredProject.externalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-emerald-300 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-100"
+              className="group relative block rounded-3xl overflow-hidden border border-emerald-500/20 hover:border-emerald-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/10"
             >
-              <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-64 md:h-auto overflow-hidden">
-                  <img
-                    src={featuredProject.image}
-                    alt={featuredProject.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <Badge className="absolute top-4 left-4 bg-emerald-600 text-white">
-                    Featured
-                  </Badge>
-                </div>
-                <div className="p-8 flex flex-col justify-center">
-                  <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
-                    <span className="text-emerald-600 font-medium">{featuredProject.category}</span>
-                    <span>•</span>
-                    <span>{featuredProject.date}</span>
-                    <span>•</span>
-                    <span>{featuredProject.readTime}</span>
+              {/* Background Image with overlay */}
+              <div className="relative h-[400px] md:h-[450px]">
+                <img
+                  src={featuredProject.image}
+                  alt={featuredProject.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Badge className="bg-emerald-600 text-white border-0">
+                      Featured
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20"
+                    >
+                      {featuredProject.category}
+                    </Badge>
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 group-hover:text-emerald-600 transition-colors">
+
+                  <h3 className="text-3xl md:text-5xl font-bold mb-4 group-hover:text-emerald-400 transition-colors duration-300">
                     {featuredProject.title}
                   </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+
+                  <p className="text-lg text-muted-foreground max-w-2xl mb-6 leading-relaxed">
                     {featuredProject.description}
                   </p>
-                  <div className="flex items-center gap-2 text-emerald-600 font-medium group-hover:gap-3 transition-all">
-                    View Project <ExternalLink className="w-4 h-4" />
+
+                  <div className="flex flex-wrap items-center gap-3">
+                    {featuredProject.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 text-sm border border-emerald-500/20"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                    <span className="ml-auto flex items-center gap-2 text-emerald-400 font-medium group-hover:gap-3 transition-all">
+                      View Project <ArrowUpRight className="w-5 h-5" />
+                    </span>
                   </div>
                 </div>
               </div>
@@ -132,79 +153,93 @@ export default function Projects() {
           </div>
         )}
 
-        {/* Projects Grid */}
+        {/* Projects Grid — Dark Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.filter(p => p !== featuredProject || activeCategory !== 'All' || searchQuery).map((project, index) => (
-            <a
-              key={project.id}
-              href={project.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-emerald-300 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-100 flex flex-col"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="relative aspect-video overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+          {filteredProjects
+            .filter((p) => p !== featuredProject || activeCategory !== 'All' || searchQuery)
+            .map((project, index) => (
+              <a
+                key={project.id}
+                href={project.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex flex-col rounded-2xl bg-card/40 border border-border/40 backdrop-blur-sm overflow-hidden hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/5"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500/0 via-emerald-500/50 to-cyan-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {project.featured && (
-                  <Badge className="absolute top-4 left-4 bg-emerald-600/90 text-white">
-                    Featured
-                  </Badge>
-                )}
+                {/* Image */}
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/40 to-transparent" />
 
-                <div className="absolute inset-0 bg-emerald-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="text-white font-medium flex items-center gap-2 text-lg">
-                    View Project <ExternalLink className="w-5 h-5" />
-                  </span>
-                </div>
-              </div>
+                  {project.featured && (
+                    <Badge className="absolute top-4 left-4 bg-emerald-600/90 text-white border-0">
+                      Featured
+                    </Badge>
+                  )}
 
-              <div className="p-6 flex-1 flex flex-col">
-                <div className="flex items-center gap-3 mb-3 text-xs text-gray-500">
-                  <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 hover:bg-emerald-50">
-                    {project.category}
-                  </Badge>
-                  <span>{project.readTime}</span>
+                  {/* Hover overlay icon */}
+                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                    <ExternalLink className="w-4 h-4 text-emerald-400" />
+                  </div>
                 </div>
 
-                <h3 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-emerald-600 transition-colors line-clamp-2">
-                  {project.title}
-                </h3>
+                {/* Content */}
+                <div className="p-6 flex-1 flex flex-col">
+                  <div className="flex items-center justify-between mb-3">
+                    <Badge
+                      variant="secondary"
+                      className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs"
+                    >
+                      {project.category}
+                    </Badge>
+                    <span className="text-xs text-muted-foreground">
+                      {project.date}
+                    </span>
+                  </div>
 
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-1">
-                  {project.description}
-                </p>
+                  <h3 className="text-lg font-semibold mb-2 group-hover:text-emerald-400 transition-colors line-clamp-2">
+                    {project.title}
+                  </h3>
 
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="text-sm text-gray-500">{project.date}</span>
-                  <div className="flex gap-2">
-                    {project.tags.slice(0, 2).map((tag) => (
+                  <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-1 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 pt-4 border-t border-border/30">
+                    {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs px-2 py-1 rounded bg-gray-100 text-gray-600"
+                        className="text-xs px-2.5 py-1 rounded-md bg-secondary/50 text-muted-foreground border border-border/30 group-hover:border-emerald-500/20 group-hover:text-emerald-400 transition-colors"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
-            </a>
-          ))}
+              </a>
+            ))}
         </div>
 
         {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="text-center py-20">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
-              <Search className="w-8 h-8 text-gray-400" />
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary/50 flex items-center justify-center">
+              <Search className="w-8 h-8 text-muted-foreground" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">No projects found</h3>
-            <p className="text-gray-500">Try adjusting your search or category filter</p>
+            <h3 className="text-lg font-semibold text-foreground mb-2">
+              No projects found
+            </h3>
+            <p className="text-muted-foreground">
+              Try adjusting your search or category filter
+            </p>
           </div>
         )}
       </div>
