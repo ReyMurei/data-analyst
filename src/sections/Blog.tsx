@@ -15,7 +15,7 @@ const blogPosts = [
     category: 'SQL',
     tags: ['Databases', 'Data Modeling', 'Database Schemas'],
     author: 'Audrey Murigi',
-    date: 'Mar 15, 2024',
+    date: 'June 19, 2026',
     readTime: '7 min read',
     featured: true,
     externalUrl: `${EXTERNAL_BLOG_URL}/behind-every-great-dashboard-the-power-of-data-modeling`,
