@@ -27,7 +27,7 @@ const projects = [
     description:
       'Analyzed 7,043 customer records to investigate churn patterns, identify customer segments with higher churn rates, and assess business performance. Cleaned and validated the dataset, conducted exploratory data analysis, and developed data-driven recommendations to support customer retention strategies.',
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop',
-    category: 'Visualization',
+    category: 'Analysis',
     tags: ['Google Sheets', 'Data Cleaning', 'Exploratory Data Analysis', 'Customer Analytics'],
     date: 'November 2026',
     readTime: '5 min read',
@@ -36,7 +36,7 @@ const projects = [
   },
 ];
 
-const categories = ['All', 'Visualization', 'SQL', 'Machine Learning', 'Automation'];
+const categories = ['All', 'Visualization', 'SQL', 'Analysis', 'Automation'];
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');
