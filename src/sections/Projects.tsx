@@ -23,7 +23,7 @@ const projects = [
   },
   {
     id: 2,
-    title: 'Telco Customer Churn Analysis',
+    title: 'Customer Churn Analysis -Telco communications Company',
     description:
       'Analyzed 7,043 customer records to investigate churn patterns, identify customer segments with higher churn rates, and assess business performance. Cleaned and validated the dataset, conducted exploratory data analysis, and developed data-driven recommendations to support customer retention strategies.',
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop',
