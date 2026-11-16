@@ -32,7 +32,7 @@ const projects = [
     date: 'November 2026',
     readTime: '5 min read',
     featured: false,
-    externalUrl: `https://datahackstudio.hashnode.dev/telco-customer-churn-analysis`,
+    externalUrl: `https://datahackstudio.hashnode.dev/customer-churn-analysis-telco-communications-company`,
   },
 ];
 
