@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -19,6 +20,19 @@ const projects = [
     readTime: '5 min read',
     featured: true,
     externalUrl: `${EXTERNAL_PROJECTS_URL}/superstore-sales-dashboard`,
+  },
+  {
+    id: 2,
+    title: 'Telco Customer Churn Analysis',
+    description:
+      'Analyzed 7,043 customer records to investigate churn patterns, identify customer segments with higher churn rates, and assess business performance. Cleaned and validated the dataset, conducted exploratory data analysis, and developed data-driven recommendations to support customer retention strategies.',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop',
+    category: 'Visualization',
+    tags: ['Google Sheets', 'Data Cleaning', 'Exploratory Data Analysis', 'Customer Analytics'],
+    date: 'November 2026',
+    readTime: '5 min read',
+    featured: false,
+    externalUrl: `${https://datahackstudio.hashnode.dev/telco-customer-churn-analysis}/telco-customer-churn-analysis`,
   },
 ];
 
